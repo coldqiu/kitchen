@@ -11,7 +11,6 @@ import { useCounterStore } from '../stores/counter'
 export default {
   setup() {
     const counter = useCounterStore()
-
     const onAdd = () => {
       counter.count++
 

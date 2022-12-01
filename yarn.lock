@@ -1538,6 +1538,16 @@
     "@tarojs/service" "3.5.7"
     "@tarojs/shared" "3.5.7"
 
+"@tarojs/plugin-html@^3.5.7":
+  version "3.5.7"
+  resolved "https://registry.npmmirror.com/@tarojs/plugin-html/-/plugin-html-3.5.7.tgz#7082c64971dcfdb6b2211c9c57e7ce50160dc79f"
+  integrity sha512-A6ScKjIpbjGMQIbTiJ1gq3Szsvt/gO62Sih6eyCpXGMxeNmN8E9xW4StnN+pTO+rXM0fyLtozD6JLCikgREQ8w==
+  dependencies:
+    "@babel/parser" "^7.14.5"
+    "@tarojs/runtime" "3.5.7"
+    "@tarojs/service" "3.5.7"
+    "@tarojs/shared" "3.5.7"
+
 "@tarojs/plugin-platform-alipay@3.5.7":
   version "3.5.7"
   resolved "https://registry.npmmirror.com/@tarojs/plugin-platform-alipay/-/plugin-platform-alipay-3.5.7.tgz#bf3d8251dcfe69f1687232222b97ae7dd8f9b3c2"

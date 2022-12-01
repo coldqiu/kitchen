@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: 'page2'
+  navigationStyle: 'custom',
+  enablePullDownRefresh: true,
 }

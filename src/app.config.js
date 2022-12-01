@@ -16,7 +16,7 @@ export default {
       "text": "首页"
     }, {
       "pagePath": "pages/two/index",
-      "text": "page2"
+      "text": "发现"
     }]
   }
 }

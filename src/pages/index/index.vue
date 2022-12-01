@@ -9,7 +9,7 @@ import './index.scss'
 import Counter from '../../components/Counter.vue'
 
 export default {
-  name: 'Index',
+  name: 'page-index',
   components: {
     Counter
   }
