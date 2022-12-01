@@ -1,0 +1,26 @@
+.food_class {
+  .wrap {
+    margin-bottom: 35px;
+    color: rgb(42, 36, 49);
+    background: rgb(242 242 242);
+    border-radius: 45px;
+    padding-bottom: 20px;
+    .title {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 36px;
+      color: rgb(42, 36, 49);
+    }
+    .list {
+      .item {
+        display: inline-block;
+        height: 55px;
+        line-height: 55px;
+        padding: 0 20px;
+        border-radius: 25px;
+        background: #ffffff;
+        margin: 0 15px 25px 15px;
+      }
+    }
+  }
+}

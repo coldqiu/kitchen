@@ -6,4 +6,19 @@
 
 .page {
   font-family: "dyh";
+  // filter: grayscale(0.95);
+  .flex {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 40px;
+    .search {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      padding-right: 5px;
+    }
+  }
 }

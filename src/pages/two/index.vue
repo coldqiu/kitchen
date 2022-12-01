@@ -1,5 +1,4 @@
 <template>
-  <!-- <page-meta> -->
   <view class="page">
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
@@ -7,8 +6,6 @@
         <view class="search">搜索</view>
       </view>
     </CompNavigationBar>
-    <!-- <navigation-bar title="title" loading="{{nbLoading}}" color-animation-duration="2000"
-      color-animation-timing-func="easeIn" /> -->
     <view class="classWrap">
       <view class="title">热门分类</view>
       <view class="link">全部分类</view>
@@ -35,7 +32,6 @@
       </view>
     </view>
   </view>
-  <!-- </page-meta> -->
 </template>
 <script>
 export default {
@@ -46,10 +42,10 @@ export default {
 import { ref } from 'vue'
 import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
-  showNavigationBarLoading, hideNavigationBarLoading,
   hideLoading, showLoading
 } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
+
 import './index.scss'
 const classData = new Array(12).fill(0).map((item, index) => { return index })
 const initList = new Array(26).fill(0).map((item, index) => {
