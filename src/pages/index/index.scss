@@ -1,4 +1,16 @@
 .page {
+  .flex {
+    .search {
+      display: none;
+      opacity: 0;
+      // transition: "all" 4.6s ease-in-out;
+      // transition: "opacity" 5s ease-in-out;
+    }
+    .show {
+      display: block;
+      opacity: 1;
+    }
+  }
   .input {
     margin: 80px 25px;
     background: rgb(242 242 242);
@@ -56,6 +68,28 @@
     }
   }
   .food_class_wrap {
-    margin: 30px 25px;
+    margin: 0 25px;
+    padding-bottom: 120px;
+  }
+  .search_wrap {
+    position: fixed;
+    left: 25px;
+    right: 25px;
+    bottom: -90px;
+    transition: all 0.15s ease-in-out;
+    .text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(229, 221, 237);
+      color: rebeccapurple;
+      border-radius: 45px;
+      height: 80px;
+      font-size: 40px;
+    }
+  }
+  .show {
+    bottom: 30px;
+    // opacity: 1;
   }
 }

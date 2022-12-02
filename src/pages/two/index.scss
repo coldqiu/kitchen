@@ -18,17 +18,16 @@
     display: flex;
     justify-content: space-between;
     padding: 0 30px;
-    // height: 60px;
-    // line-height: 60px;
     .title {
       font-size: 40px;
       font-weight: 600;
       color: #222222;
     }
     .link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 24px;
-      // padding: 5px 6px;
-      // border-radius: 6px;
       padding: 0 20px;
       line-height: 2;
       border-radius: 100px;

@@ -12,6 +12,7 @@
       color: rgb(42, 36, 49);
     }
     .list {
+      padding: 0 20px;
       .item {
         display: inline-block;
         height: 55px;
@@ -20,6 +21,10 @@
         border-radius: 25px;
         background: #ffffff;
         margin: 0 15px 25px 15px;
+      }
+      .checked {
+        background: rebeccapurple;
+        color: #ffffff;
       }
     }
   }
