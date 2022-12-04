@@ -1,0 +1,90 @@
+.page {
+  .flex {
+    //
+    .menu_wrap {
+      position: absolute;
+      top: 0px;
+      left: 15px;
+      font-size: 0;
+      bottom: -2px;
+      width: 150px;
+      border: 1px solid #eaeaeb;
+      border-radius: 40px;
+    }
+    .capsule {
+      box-sizing: border-box;
+      font-size: 0;
+      .back {
+        font-size: 36px;
+      }
+      .home {
+        font-size: 36px;
+      }
+      .button {
+        display: inline-block;
+        padding: 0 18px;
+        box-sizing: border-box;
+      }
+      // button::after {
+      //   // border: none;
+      // }
+      .line {
+        display: inline-block;
+        width: 1px;
+        height: 36px;
+        background: #eaeaeb;
+        // transform: scale(0.5);
+      }
+    }
+  }
+  .search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    // background: rgb(200, 165, 236);
+    .input_wrap {
+      display: flex;
+      padding: 20px;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: #e3e5e9;
+        transform: scale(1, 0.5);
+      }
+      .input {
+        flex: 1 1;
+        margin-left: 15px;
+      }
+      .clear {
+        font-size: 32px;
+        background: #eeeeee;
+        padding: 5px 12px;
+      }
+      .submit {
+        color: rebeccapurple;
+        padding: 0 10px;
+        margin: 0 20px;
+      }
+      .cancel {
+        padding: 0 10px;
+      }
+    }
+    .result_wrap {
+      .link_list {
+        padding: 10px 35px;
+        box-shadow: 0 4px 3px #e3e5e9;
+        .item {
+          padding: 5px 0;
+          // background: rebeccapurple;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

@@ -3,12 +3,12 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         Home
-        <view :class="['search', scrollTop > 100 ? 'show' : '']">搜索</view>
+        <view @tap="navigateToSearch" :class="['search', scrollTop > 100 ? 'show' : '']">搜索</view>
       </view>
     </CompNavigationBar>
 
     <view class="input">
-      <view class="flex">
+      <view @tap="navigateToSearch" class="flex">
         <view class="icon">icon</view>
         <view class="text">搜索AA</view>
       </view>
@@ -39,7 +39,7 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
-import { useReady, usePageScroll } from '@tarojs/taro'
+import { useReady, usePageScroll, navigateTo } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
 
@@ -69,15 +69,20 @@ const foodClass = [
 // 选中食材
 const checkedCount = ref(0)
 function handleChange(count) {
-  console.log('count: ', count);
   checkedCount.value = count
 }
 // usePageScroll 顶部搜索图标 动画
 const scrollTop = ref(0)
 usePageScroll(res => {
-  console.log('res: ', res);
   scrollTop.value = res.scrollTop
-  // if (res.scrollTop > 100) 
+  // if (res.scrollTop > 100) //写在 template
 })
+// 点击搜索icon 跳转 search page
+function navigateToSearch() {
+  navigateTo({
+    url: '/pages/search/index'
+  })
+}
 // 点击搜索框【跳转“搜索页前”】 重置选中食材
+
 </script>
