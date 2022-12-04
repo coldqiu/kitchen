@@ -8,7 +8,7 @@
 import './index.scss'
 
 export default {
-  name: 'page-3',
+  name: 'search-page',
 
 }
 </script>

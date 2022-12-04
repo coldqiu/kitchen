@@ -16,8 +16,8 @@
     <view class="hi">厨房里有什么？</view>
     <view class="voice">
       <view class="desc">点击说出多个食材</view>
-      <div class="ps">如：土豆、番茄、牛肉等</div>
-      <div class="icon">icon</div>
+      <text class="ps">如：土豆、番茄、牛肉等</text>
+      <text class="icon">icon</text>
     </view>
     <view class="hi">选食材</view>
     <view class="food_class_wrap">
@@ -25,7 +25,7 @@
     </view>
     <view :class="['search_wrap', checkedCount > 0 ? 'show' : '']">
       <view class="text">
-        搜索
+        查看搭配 <text class="count">{{ checkedCount }}</text>
       </view>
     </view>
   </view>
@@ -79,5 +79,5 @@ usePageScroll(res => {
   scrollTop.value = res.scrollTop
   // if (res.scrollTop > 100) 
 })
-// 点击搜索框 重置选中食材
+// 点击搜索框【跳转“搜索页前”】 重置选中食材
 </script>
