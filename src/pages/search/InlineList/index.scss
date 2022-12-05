@@ -1,0 +1,20 @@
+.inline_list_container {
+  .inline_list {
+    margin: 15px 35px 35px 35px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-size: 22px;
+      color: rgb(50, 49, 51);
+    }
+    .list {
+      .item {
+        display: inline-block;
+        padding: 12px 20px;
+        margin: 15px 20px 5px 0;
+        background: rgb(247, 247, 247);
+        color: rgb(58, 56, 59);
+      }
+    }
+  }
+}

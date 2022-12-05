@@ -42,26 +42,13 @@ import { ref } from 'vue'
 import { useReady, usePageScroll, navigateTo } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
+// 假数据
+import { tempLower, tempUpper } from '../../utils/data'
 
 useReady(() => {
   // console.log('useReady: ', useReady);
 })
-// 造数据
-const temp = 'abcdefghijklmnopqrstuvwxyz'
-const tempLower = new Array(12).fill(0).map(() => {
-  let index = Math.ceil(Math.random() * 16)
-  let length = Math.ceil(4 + Math.random() * 6)
-  return {
-    checked: false, name: temp.slice(index, index + length)
-  }
-})
-const tempUpper = new Array(12).fill(0).map(() => {
-  let index = Math.ceil(Math.random() * 16)
-  let length = Math.ceil(4 + Math.random() * 6)
-  return {
-    checked: false, name: temp.slice(index, index + length)
-  }
-})
+
 const foodClass = [
   { type: '蔬菜', list: tempLower },
   { type: '肉类', list: tempUpper }

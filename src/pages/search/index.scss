@@ -45,8 +45,11 @@
     // background: rgb(200, 165, 236);
     .input_wrap {
       display: flex;
-      padding: 20px;
       position: relative;
+      margin: 20px 0;
+      padding: 0 20px;
+      height: 60px;
+      line-height: 60px;
       &::after {
         position: absolute;
         content: "";
@@ -60,11 +63,15 @@
       .input {
         flex: 1 1;
         margin-left: 15px;
+        height: 60px;
       }
       .clear {
+        margin-left: 15px;
         font-size: 32px;
         background: #eeeeee;
-        padding: 5px 12px;
+        width: 45px;
+        height: 45px;
+        // padding: 5px 12px;
       }
       .submit {
         color: rebeccapurple;
@@ -72,19 +79,48 @@
         margin: 0 20px;
       }
       .cancel {
-        padding: 0 10px;
+        padding: 0 15px;
       }
     }
+
     .result_wrap {
+      // display: none;
+      background: #ffffff;
       .link_list {
-        padding: 10px 35px;
+        padding: 0 35px;
         box-shadow: 0 4px 3px #e3e5e9;
         .item {
-          padding: 5px 0;
-          // background: rebeccapurple;
-          margin-bottom: 10px;
+          padding: 15px 0;
+          margin-bottom: 15px;
         }
       }
     }
+    .food_list {
+      margin: 0 35px;
+      background: #ffffff;
+      .tab {
+        display: flex;
+        justify-content: space-between;
+        .item {
+          font-size: 28px;
+          color: rgb(94, 92, 95);
+        }
+        .actived {
+          color: rebeccapurple;
+        }
+      }
+      .list {
+        height: 100vh;
+        overflow: scroll;
+        .item {
+          margin: 15px 0;
+          padding: 100px 0;
+        }
+      }
+    }
+  }
+  .size_block {
+    width: 100%;
+    height: 100px;
   }
 }
