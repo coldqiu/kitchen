@@ -46,7 +46,7 @@
     .input_wrap {
       display: flex;
       position: relative;
-      margin: 20px 0;
+      margin-top: 20px;
       padding: 0 20px;
       height: 60px;
       line-height: 60px;
@@ -82,15 +82,14 @@
         padding: 0 15px;
       }
     }
-
     .result_wrap {
-      // display: none;
+      margin-top: 5px;
       background: #ffffff;
       .link_list {
         padding: 0 35px;
         box-shadow: 0 4px 3px #e3e5e9;
         .item {
-          padding: 15px 0;
+          padding: 18px 0;
           margin-bottom: 15px;
         }
       }
@@ -101,6 +100,7 @@
       .tab {
         display: flex;
         justify-content: space-between;
+        padding: 15px 0;
         .item {
           font-size: 28px;
           color: rgb(94, 92, 95);

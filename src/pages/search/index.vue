@@ -21,9 +21,10 @@
       <view class="input_wrap">
         <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
           class="input" placeholder="今天想吃点啥？" />
+        <!-- :focus="isInputFocus" -->
         <view @tap="handlerClear" class="clear"></view>
         <view @tap="handerSubmit" class="submit">搜索</view>
-        <view class="cancel">取消</view>
+        <view @tap="handlerCancel" class="cancel">取消</view>
       </view>
       <view v-if="linkListVisible" class="result_wrap">
         <view class="link_list">
@@ -46,7 +47,7 @@
     </view>
     <view class="size_block"></view>
 
-    <InlineList />
+    <InlineList @checked="handlerChecked" />
   </view>
 </template>
 
@@ -58,56 +59,88 @@ export default {
 }
 </script>
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 import InlineList from './InlineList/index.vue'
-import { getStorageSync, navigateBack, setStorageSync } from '@tarojs/taro';
+import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick } from '@tarojs/taro';
 import { tempUpper } from '../../utils/data'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
 const navigationBarHeight = getStorageSync('navigationBarHeight')
 const navigationBarAndStatusBarHeight = statusBarHeight + navigationBarHeight
-console.log('navigationBarAndStatusBarHeight: ', navigationBarAndStatusBarHeight);
 
 const navigationTitle = ref('菜谱搜索')
 const linkListVisible = ref(false)
-const foodListVisible = ref(true)
+const foodListVisible = ref(false)
 
 // input 相关
 const isInputFocus = ref(true)
 const inputValue = ref('')
 const $refInput = ref(null)
 // 默认进入搜索页时focus input
-onMounted(() => {
-  // $refInput.value
-  $refInput.value.focus()
-})
+// 错误做法 应该使用 input 组件的 focus 属性
+// 导致点击 link 时 触发 inputFocus() 原因未知
+// useReady(() => {
+//   console.log('$refInput.value.focus: ', $refInput.value.focus());
+// })
 function inputFocus(e) {
   isInputFocus.value = true;
+  foodListVisible.value = false
+  if (inputValue.value.length > 0) {
+    linkListVisible.value = true
+  }
 }
 function inputBlur(e) {
   isInputFocus.value = false;
 }
+// 直接修改 inputValue 不触发 input change 事件
 function inputChange(e) {
+  console.log('inputChange: ', inputChange);
+  foodListVisible.value = false
   let value = e.target.value.trim()
   inputValue.value = value
+  console.log('value.length: ', value.length);
+  if (value.length > 0) {
+    linkListVisible.value = true
+  } else {
+    linkListVisible.value = false
+  }
 }
+// 清除输入框数据
+function handlerClear() {
+  inputValue.value = ''
+  linkListVisible.value = false
+  foodListVisible.value = false
+
+}
+// 点击 取消 有两种状态导致不同结果：状态1，已经搜索过了，显示foodList
+// 状态2，还没搜索，回到上一页；还要兜底特殊情况：当没有上一页时（分享了一个空白的搜索页）  
+// 【待处理】
+function handlerCancel() {
+  //
+}
+// 点击 搜索历史或热门搜索
+function handlerChecked(checked) {
+  inputValue.value = checked.name
+  foodListVisible.value = true
+  linkListVisible.value = false
+}
+// watch(inputValue, () => {
+// })
+
+watchEffect(() => {
+  console.log('foodListVisible.value', foodListVisible.value)
+  console.log('linkListVisible.value: ', linkListVisible.value);
+})
 
 // 关联结果列表
 const linkList = ref('ABCDE'.split(""))
 // 点击关联结果
 function clickLink(link) {
+  inputValue.value = link
   linkListVisible.value = false
   foodListVisible.value = true
 }
-
-
-// if (inputValue.value.length > 0 && isInputFocus) {
-//     linkListVisible.value = true
-//   } else {
-//     linkListVisible.value = false
-//   }
-
 // 返回
 function handlerBack() {
   // 处理 直接进入search页的情况，路由栈中只有当前一条数据
@@ -115,20 +148,18 @@ function handlerBack() {
   // 【待处理】
   navigateBack()
 }
-// 清除输入框数据
-function handlerClear() {
-  inputValue.value = ''
-  console.log('inputValue.value:handlerClear ', inputValue.value);
-}
+
 // 提交搜索 记录到storage 最多保存6个数据
 // 需要LRU算法【待处理】
 function handerSubmit() {
   let list = getStorageSync('searchHistory')
   if (!list) {
     setStorageSync('searchHistory', [])
+    list = []
   }
+  list.push(inputValue.value)
 
-  setStorageSync(list.push(inputValue.value))
+  setStorageSync('searchHistory', list)
 }
 
 // Tab页
@@ -140,5 +171,6 @@ const tabList = [
 const currentTab = ref('normal')
 
 // foodList滚动 需要动态设置dom的高度 【待处理】
+
 
 </script>

@@ -6,7 +6,8 @@
         <view class="cancel">清空</view>
       </view>
       <view class="list">
-        <view class="item" v-for="item in tempSearchHistory" :key="item.name">{{ item.name }}</view>
+        <view @tap="handlerClick(item)" class="item" v-for="item in tempSearchHistory" :key="item.name">{{ item.name }}
+        </view>
       </view>
     </div>
     <div class="inline_list">
@@ -14,7 +15,7 @@
         <view class="text">热门搜索</view>
       </view>
       <view class="list">
-        <view class="item" v-for="item in tempHotList" :key="item.name">{{ item.name }}</view>
+        <view @tap="handlerClick(item)" class="item" v-for="item in tempHotList" :key="item.name">{{ item.name }}</view>
       </view>
     </div>
   </view>
@@ -36,10 +37,15 @@ import { tempLower, tempUpper } from '../../../utils/data'
 const tempSearchHistory = tempLower.slice(0, 5)
 const tempHotList = tempUpper.concat(tempLower)
 // defineProps({
-
 // })
-// 作为业务组件，在组件内获取数据
+// 作为业务组件，在组件内获取数据,不适用props传入
 const searchHistory = ref(getStorageSync('searchHistory'))
 console.log('searchHistory: ', searchHistory);
+
+// 点击 菜名,向外抛出事件
+const emit = defineEmits(['checked'])
+function handlerClick(item) {
+  emit('checked', item)
+}
 
 </script>
