@@ -41,7 +41,7 @@ function handleClick(e, food) {
     checkedCount.value = checkedCount.value - 1;
   }
   emit('change', checkedCount.value)
-  // vibrateShort({ type: 'light' })
+  vibrateShort({ type: 'light' })
 }
 
 </script>

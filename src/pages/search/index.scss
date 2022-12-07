@@ -48,8 +48,8 @@
       position: relative;
       margin-top: 20px;
       padding: 0 20px;
-      height: 60px;
-      line-height: 60px;
+      height: 80px;
+      line-height: 80px;
       &::after {
         position: absolute;
         content: "";
@@ -63,7 +63,8 @@
       .input {
         flex: 1 1;
         margin-left: 15px;
-        height: 60px;
+        height: 80px;
+        font-size: 38px;
       }
       .clear {
         margin-left: 15px;
@@ -98,7 +99,7 @@
       .tab {
         display: flex;
         justify-content: space-between;
-        padding: 15px 0;
+        padding: 25px 0;
         .item {
           font-size: 28px;
           color: rgb(94, 92, 95);
