@@ -43,13 +43,19 @@
     left: 0;
     right: 0;
     // background: rgb(200, 165, 236);
+    font-size: 0;
     .input_wrap {
       display: flex;
+      align-items: flex-end;
       position: relative;
-      margin-top: 20px;
       padding: 0 20px;
-      height: 80px;
-      line-height: 80px;
+      height: 100px;
+      line-height: 100px;
+      z-index: 10;
+      background: #ffffff;
+      position: fixed;
+      left: 0;
+      right: 0;
       &::after {
         position: absolute;
         content: "";
@@ -63,43 +69,70 @@
       .input {
         flex: 1 1;
         margin-left: 15px;
+        margin-top: 20px;
         height: 80px;
         font-size: 38px;
       }
       .clear {
+        display: flex;
+        align-items: center;
         margin-left: 15px;
-        font-size: 32px;
-        background: #af1717;
-        width: 45px;
-        height: 45px;
+        height: 100%;
+        padding-top: 15px;
+        box-sizing: border-box;
+        .icon {
+          background: #af1717;
+          width: 45px;
+          height: 45px;
+        }
       }
       // 下面两者 padding-right 需要相同
       .submit {
         color: rebeccapurple;
-        padding: 0 15px;
+        padding: 15px 15px 0 15px;
         margin-left: 25px;
+        box-sizing: border-box;
+        height: 100%;
+        font-size: 36px;
       }
       .cancel {
-        padding: 0 15px;
+        padding: 15px 15px 0 15px;
+        box-sizing: border-box;
+        height: 100%;
+        font-size: 36px;
       }
     }
+    .size_block {
+      width: 100%;
+      height: 100px;
+    }
     .result_wrap {
-      margin-top: 5px;
+      padding-bottom: 6px;
       background: #ffffff;
+      z-index: 2000;
       .link_list {
-        box-shadow: 0 4px 3px #e3e5e9;
+        box-shadow: 0 2px 18px #d2d5dc;
         .item {
-          padding: 18px 40px;
+          padding: 0 40px;
+          height: 100px;
+          line-height: 100px;
+          font-size: 38px;
         }
       }
     }
     .food_list {
-      margin: 0 35px;
       background: #ffffff;
       .tab {
         display: flex;
         justify-content: space-between;
-        padding: 25px 0;
+        height: 80px;
+        line-height: 80px;
+        margin: 0 35px;
+        background: #ffffff;
+        transition: all 0.15s;
+        position: fixed;
+        left: 0;
+        right: 0;
         .item {
           font-size: 28px;
           color: rgb(94, 92, 95);
@@ -108,10 +141,23 @@
           color: rebeccapurple;
         }
       }
+      .show {
+        position: fixed;
+        height: 80px;
+      }
+      .hide {
+        height: 0px;
+        position: absolute;
+      }
       .list {
-        height: 100vh;
-        overflow: scroll;
+        // height: 100vh;
+        // overflow: scroll;
+        padding-top: 80px;
+        margin: 0 35px;
+        padding-bottom: 100px;
         .item {
+          font-size: 36px;
+          background-color: #f78f8f;
           margin: 15px 0;
           padding: 100px 0;
         }

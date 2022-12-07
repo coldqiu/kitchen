@@ -18,38 +18,43 @@
       </view>
     </CompNavigationBar>
     <view class="search" :style="{ top: navigationBarAndStatusBarHeight + 'px' }">
-      <view class="input_wrap">
-        <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
-          class="input" placeholder="今天想吃点啥？" />
-        <!-- :focus="isInputFocus" -->
-        <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
-        <view v-show="clearVisible" @tap="handlerClear" class="clear"></view>
-        <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">搜索</view>
-        <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">取消</view>
-      </view>
-      
-      <view v-show="linkListVisible" class="result_wrap">
-        <view class="link_list">
-          <view @tap="clickLink(item)" v-for="item in linkList" :key="item" class="item">{{ item }}</view>
+      <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll">
+        <view class="input_wrap">
+          <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
+            class="input" placeholder="今天想吃点啥？" />
+          <!-- :focus="isInputFocus" -->
+          <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
+          <view v-show="clearVisible" class="clear">
+            <view @tap="handlerClear" class="icon"></view>
+          </view>
+          <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">搜索</view>
+          <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">取消</view>
         </view>
-      </view>
-      <view v-if="foodListVisible" class="food_list">
-        <view class="tab">
-          <view v-for="item in tabList" :key="item.type" :class="['item', currentTab === item.type ? 'actived' : '']">{{
-              item.title
-          }}
+        <view class="size_block"></view>
+
+        <view v-if="linkListVisible" class="result_wrap">
+          <view class="link_list">
+            <view @tap="clickLink(item)" v-for="item in linkList" :key="item" class="item">{{ item }}</view>
           </view>
         </view>
-        <view class="list">
-          <view v-for="item in tempUpper" :key="item.name" class="item">
-            {{ item.name }}
+        <view v-show="foodListVisible" class="food_list">
+          <view :class="['tab', tabVisible ? 'show' : 'hide']">
+            <view @tap="changeTab(item)" v-for="item in tabList" :key="item.type"
+              :class="['item', currentTab === item.type ? 'actived' : '']">
+              {{ item.title }}
+            </view>
+          </view>
+          <view class="list">
+            <view v-for="item in tempUpper" :key="item.name" class="item">
+              {{ item.name }}
+            </view>
           </view>
         </view>
-      </view>
+      </scroll-view>
     </view>
     <view class="size_block"></view>
 
-    <InlineList @checked="handlerChecked" />
+    <InlineList @checked="handlerChecked" :zIndex="10" />
   </view>
 </template>
 
@@ -61,7 +66,7 @@ export default {
 }
 </script>
 <script setup>
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, watch } from 'vue'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 import InlineList from './InlineList/index.vue'
 import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick } from '@tarojs/taro';
@@ -96,7 +101,7 @@ function inputFocus(e) {
 function inputBlur(e) {
   isInputFocus.value = false
   nextTick(() => {
-    linkListVisible.value = false
+    // linkListVisible.value = false
   })
 }
 // 直接修改 inputValue 不触发 input change 事件
@@ -121,7 +126,8 @@ function handlerClear() {
 // 状态2，还没搜索，回到上一页；还要兜底特殊情况：当没有上一页时（分享了一个空白的搜索页）  
 // 【待处理】
 function handlerCancel() {
-  //
+  linkListVisible.value = false
+  foodListVisible.value = true
 }
 // 点击 搜索历史或热门搜索
 function handlerChecked(checked) {
@@ -146,10 +152,10 @@ const clearVisible = computed(() => {
 // const 
 
 
-// watchEffect(() => {
-//   console.log('foodListVisible.value', foodListVisible.value)
-//   console.log('linkListVisible.value: ', linkListVisible.value);
-// })
+watchEffect(() => {
+  // console.log('foodListVisible.value', foodListVisible.value)
+  // console.log('linkListVisible.value: ', linkListVisible.value);
+})
 
 // 关联结果列表
 const linkList = ref('ABCDE'.split(""))
@@ -189,8 +195,41 @@ const tabList = [
   { type: 'flow', title: '做过最多' },
 ]
 const currentTab = ref('normal')
+// 切换tab
+function changeTab(tab) {
+  currentTab.value = tab.type
+}
 
 // foodList滚动 需要动态设置dom的高度 【待处理】
+// 设置scroll-view height
+const isScroll = ref(false)
+const scrollViewHeight = ref({})
+
+watch(foodListVisible, (val) => {
+  if (val) {
+    scrollViewHeight.value = { height: `calc(100vh - 60px)` }
+    isScroll.value = true
+
+  } else {
+    scrollViewHeight.value = { height: '' }
+    isScroll.value = false
+  }
+})
+// foodList 滚动 设置 tab 动画 显示、隐藏
+const scrollTop = ref(0)
+const tabVisible = ref(true)
+function handlerScroll(e) {
+  let value = e.target.scrollTop
+  if (value > 120) {
+    if ((value - scrollTop.value) > 0) {
+      tabVisible.value = false
+    } else {
+      tabVisible.value = true
+    }
+  }
+  scrollTop.value = value
+}
+
 
 
 </script>

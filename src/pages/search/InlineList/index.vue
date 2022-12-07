@@ -1,5 +1,5 @@
 <template>
-  <view class="inline_list_container">
+  <view class="inline_list_container" :style="{ zIndex: zIndex }">
     <div class="inline_list">
       <view class="title">
         <view class="text">搜索历史</view>
@@ -36,8 +36,9 @@ import { tempLower, tempUpper } from '../../../utils/data'
 
 const tempSearchHistory = tempLower.slice(0, 5)
 const tempHotList = tempUpper.concat(tempLower)
-// defineProps({
-// })
+defineProps({
+  zIndex: String
+})
 // 作为业务组件，在组件内获取数据,不适用props传入
 const searchHistory = ref(getStorageSync('searchHistory'))
 console.log('searchHistory: ', searchHistory);
