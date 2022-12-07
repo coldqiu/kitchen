@@ -68,15 +68,15 @@
       .clear {
         margin-left: 15px;
         font-size: 32px;
-        background: #eeeeee;
+        background: #af1717;
         width: 45px;
         height: 45px;
-        // padding: 5px 12px;
       }
+      // 下面两者 padding-right 需要相同
       .submit {
         color: rebeccapurple;
-        padding: 0 10px;
-        margin: 0 20px;
+        padding: 0 15px;
+        margin-left: 25px;
       }
       .cancel {
         padding: 0 15px;
@@ -86,11 +86,9 @@
       margin-top: 5px;
       background: #ffffff;
       .link_list {
-        padding: 0 35px;
         box-shadow: 0 4px 3px #e3e5e9;
         .item {
-          padding: 18px 0;
-          margin-bottom: 15px;
+          padding: 18px 40px;
         }
       }
     }
