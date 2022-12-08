@@ -101,7 +101,7 @@ function inputFocus(e) {
 function inputBlur(e) {
   isInputFocus.value = false
   nextTick(() => {
-    // linkListVisible.value = false
+    linkListVisible.value = false
   })
 }
 // 直接修改 inputValue 不触发 input change 事件
@@ -178,6 +178,8 @@ function handlerBack() {
 // 提交搜索 记录到storage 最多保存6个数据
 // 需要LRU算法【待处理】
 function handerSubmit() {
+  linkListVisible.value = false
+  foodListVisible.value = true
   // let list = getStorageSync('searchHistory')
   // if (!list) {
   //   setStorageSync('searchHistory', [])

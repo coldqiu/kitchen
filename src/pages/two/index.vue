@@ -3,7 +3,7 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         发现
-        <view class="search">搜索</view>
+        <view @tap="navigateToSearch" class="search">搜索</view>
       </view>
     </CompNavigationBar>
     <view class="classWrap">
@@ -26,9 +26,7 @@
         <view class="content" :style="{ background: setColor(item) }">
 
         </view>
-        <div class="text">
-          {{ item }}
-        </div>
+        <div class="text">{{ item }} </div>
       </view>
     </view>
   </view>
@@ -42,7 +40,7 @@ export default {
 import { ref } from 'vue'
 import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
-  hideLoading, showLoading
+  hideLoading, showLoading, navigateTo
 } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 
@@ -75,6 +73,12 @@ useReachBottom(() => {
 
 function setColor(num) {
   return `rgba(89, 54, 124, ${num})`
+}
+// 跳转
+function navigateToSearch() {
+  navigateTo({
+    url: '/pages/search/index'
+  })
 }
 </script>
 
