@@ -26,7 +26,6 @@ const navigationBarHeight = getStorageSync('navigationBarHeight')
 const navigationBarAndStatusBarHeight = statusBarHeight + navigationBarHeight
 
 const props = defineProps({
-  // position: Boolean
   position: {
     type: String,
     default: 'fixed',

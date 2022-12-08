@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { getMenuButtonBoundingClientRect, getSystemInfoSync, setStorageSync } from '@tarojs/taro'
+import { loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync, setStorageSync } from '@tarojs/taro'
 
 
 import './app.scss'
+
+
 
 const App = createApp({
   onLaunch() {
@@ -23,6 +25,20 @@ const App = createApp({
     } else {
       setStorageSync('navigationBarHeight', platform === 'android' ? 48 : 40)
     }
+
+    // 加载字体 【网络 抛出 403】
+    loadFontFace({
+      global: true,
+      family: 'dyh',
+      source: 'https://cdn.coldqiu.com/SmileySans-Oblique.ttf',
+      // scopes: ['webview', 'native'],
+      success: () => {
+        console.log("load font success")
+      },
+      fail: () => {
+        console.log("load font fail")
+      }
+    })
   },
 
   onShow(options) {
