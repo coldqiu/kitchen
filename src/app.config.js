@@ -2,7 +2,14 @@ export default {
   pages: [
     'pages/index/index',
     'pages/two/index',
-    'pages/search/index'
+  ],
+  subpackages: [
+    {
+      root: 'subpackages',
+      pages: [
+        'pages/search/index'
+      ]
+    }
   ],
   window: {
     backgroundTextStyle: 'light',

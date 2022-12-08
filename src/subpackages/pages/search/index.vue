@@ -67,10 +67,10 @@ export default {
 </script>
 <script setup>
 import { ref, computed, watchEffect, watch } from 'vue'
-import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
+import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import InlineList from './InlineList/index.vue'
 import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick } from '@tarojs/taro';
-import { tempUpper } from '../../utils/data'
+import { tempUpper } from '@/utils/data'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
 const navigationBarHeight = getStorageSync('navigationBarHeight')

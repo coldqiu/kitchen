@@ -67,7 +67,7 @@ usePageScroll(res => {
 // 点击搜索icon 跳转 search page
 function navigateToSearch() {
   navigateTo({
-    url: '/pages/search/index'
+    url: '/subpackages/pages/search/index'
   })
 }
 // 点击搜索框【跳转“搜索页前”】 重置选中食材

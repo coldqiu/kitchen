@@ -32,7 +32,7 @@ export default {
 import { ref } from 'vue'
 import { getStorageSync, setStorageSync } from '@tarojs/taro';
 // 假数据
-import { tempLower, tempUpper } from '../../../utils/data'
+import { tempLower, tempUpper } from '@/utils/data'
 
 const tempSearchHistory = tempLower.slice(0, 5)
 const tempHotList = tempUpper.concat(tempLower)

@@ -3,6 +3,11 @@
   font-family: "dyh";
   src: url("./static/fonts/SmileySans-Oblique.ttf.woff2");
 }
+// 使用iconfonts图标
+@font-face {
+  font-family: "iconfont";
+  src: url("./static/svg/iconfont.ttf");
+}
 
 .page {
   font-family: "dyh";

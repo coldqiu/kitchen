@@ -77,7 +77,7 @@ function setColor(num) {
 // 跳转
 function navigateToSearch() {
   navigateTo({
-    url: '/pages/search/index'
+    url: '/subpackages/pages/search/index'
   })
 }
 </script>
