@@ -41,7 +41,6 @@ defineProps({
 })
 // 作为业务组件，在组件内获取数据,不适用props传入
 const searchHistory = ref(getStorageSync('searchHistory'))
-console.log('searchHistory: ', searchHistory);
 
 // 点击 菜名,向外抛出事件
 const emit = defineEmits(['checked'])

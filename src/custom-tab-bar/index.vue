@@ -70,13 +70,13 @@ function setSelected(index) {
 }
 
 .tab-bar-border {
-  background-color: rgba(0, 0, 0, 0.33);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 1px;
-  transform: scaleY(0.5);
+  // background-color: rgba(0, 0, 0, 0.33);
+  // position: absolute;
+  // left: 0;
+  // top: 0;
+  // width: 100%;
+  // height: 1px;
+  // transform: scaleY(0.5);
 }
 
 .tab-bar-item {

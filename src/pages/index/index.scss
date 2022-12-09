@@ -68,14 +68,14 @@
   }
   .food_class_wrap {
     margin: 0 25px;
-    padding-bottom: 120px;
+    padding-bottom: 280px;
   }
   .search_wrap {
     position: fixed;
     left: 25px;
     right: 25px;
     bottom: -90px;
-    transition: all 0.15s ease-in-out;
+    transition: all 0.25s ease-in-out;
     .text {
       display: flex;
       justify-content: center;
@@ -96,7 +96,7 @@
     }
   }
   .show {
-    bottom: 30px;
+    bottom: 195px;
     // opacity: 1;
   }
 }
