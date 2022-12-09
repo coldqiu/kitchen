@@ -18,6 +18,10 @@ export default {
     navigationBarTextStyle: 'black'
   },
   tabBar: {
+    custom: true,
+    "color": "red",
+    "selectedColor": "green",
+    "backgroundColor": "blue",
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页"

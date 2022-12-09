@@ -3,7 +3,9 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         Home
-        <view @tap="navigateToSearch" :class="['search', scrollTop > 100 ? 'show' : '']">搜索</view>
+        <view @tap="navigateToSearch" :class="['search', scrollTop > 100 ? 'show' : '']">
+          <text class="iconfont icon-fangdajing"></text>
+        </view>
       </view>
     </CompNavigationBar>
 
@@ -17,7 +19,7 @@
     <view class="voice">
       <view class="desc">点击说出多个食材</view>
       <text class="ps">如：土豆、番茄、牛肉等</text>
-      <text class="icon">icon</text>
+      <text class="icon iconfont icon-maikefeng"></text>
     </view>
     <view class="hi">选食材</view>
     <view class="food_class_wrap">

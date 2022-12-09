@@ -1,11 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync, setStorageSync } from '@tarojs/taro'
-
-
 import './app.scss'
-
-
 
 const App = createApp({
   onLaunch() {
@@ -26,7 +22,7 @@ const App = createApp({
       setStorageSync('navigationBarHeight', platform === 'android' ? 48 : 40)
     }
 
-    // 加载字体 【网络 抛出 403】
+    // 加载字体 【网络 抛出 403】【处理，oss服务器 referer添加白名单 微信小程序】
     loadFontFace({
       global: true,
       family: 'dyh',

@@ -1,13 +1,11 @@
+// 字体文件过大，使用网络加载
 // 使用“得意黑”字体
 // @font-face {
 //   font-family: "dyh";
 //   src: url("./static/fonts/SmileySans-Oblique.ttf.woff2");
 // }
 // 使用iconfonts图标
-@font-face {
-  font-family: "iconfont";
-  src: url("./static/svg/iconfont.ttf");
-}
+@import "./static/svg/iconfont.css";
 
 .page {
   font-family: "dyh";
