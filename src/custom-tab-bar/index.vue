@@ -3,9 +3,9 @@
     <cover-view class="tab-bar-border"></cover-view>
     <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item"
       @tap="handlerSwitchTab(index, item.pagePath)">
-      <text :class="['iconfont', item.iconPath, selected === index ? 'selected' : '']"
-        :style="{ color: selected === index ? selectedColor : color }"></text>
-      <!-- <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" /> -->
+      <!-- <text :class="['iconfont', item.iconPath, selected === index ? 'selected' : '']"
+        :style="{ color: selected === index ? selectedColor : color }"></text> -->
+      <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
       <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
     </cover-view>
   </cover-view>
@@ -19,21 +19,24 @@ export default {
 import { ref } from 'vue'
 import { switchTab } from '@tarojs/taro'
 import { useTabbarStore } from '@/stores/tabbar.js'
+
 const tabbarStore = useTabbarStore()
-console.log('tabbarStore: ', tabbarStore);
 const selected = ref(tabbarStore.index)
-const color = '#c9b9d8'
-const selectedColor = 'rebeccapurple'
+const color = '#082c63'
+const selectedColor = 'rebeccapurple' // #663399 #082c63
 const list = [
   {
     pagePath: '/pages/index/index',
-    // selectedIconPath: '../images/tabbar_home_on.png',
-    iconPath: 'icon-shouye',
+    selectedIconPath: './images/index_actived.png',
+    iconPath: './images/index.png',
+    // iconPath: 'icon-shouye',
     text: '首页'
   },
   {
     pagePath: '/pages/two/index',
-    iconPath: 'icon-all-fill',
+    selectedIconPath: './images/quanbu_actived.png',
+    iconPath: './images/quanbu.png',
+    // iconPath: 'icon-all-fill',
     text: '发现'
   },
   // {
