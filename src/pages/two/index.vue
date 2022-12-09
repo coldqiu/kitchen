@@ -3,7 +3,9 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         发现
-        <view @tap="navigateToSearch" class="search">搜索</view>
+        <view @tap="navigateToSearch" class="search">
+          <text class="iconfont icon-sousuo"></text>
+        </view>
       </view>
     </CompNavigationBar>
     <view class="classWrap">

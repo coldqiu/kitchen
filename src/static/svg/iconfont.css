@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1670574827664') format('truetype');
+  font-family: "iconfont"; /* Project id 3818885 */
+  src: url('iconfont.woff2?t=1670587253095') format('woff2'),
+       url('iconfont.woff?t=1670587253095') format('woff'),
+       url('iconfont.ttf?t=1670587253095') format('truetype');
 }
 
 .iconfont {
@@ -11,119 +13,59 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-jiantou1:before {
+  content: "\e623";
+}
+
+.icon-jiantou:before {
+  content: "\e601";
+}
+
+.icon-jiantoushang1:before {
+  content: "\e62d";
+}
+
+.icon-jiantouyou:before {
+  content: "\e62e";
+}
+
+.icon-jiantouxia:before {
+  content: "\e62f";
+}
+
+.icon-zhaoxiangji:before {
+  content: "\e663";
+}
+
+.icon-shangchuan-:before {
+  content: "\e647";
+}
+
+.icon-31shezhi:before {
+  content: "\e600";
+}
+
 .icon-maikefeng:before {
   content: "\e65f";
 }
 
-.icon-gengduo:before {
-  content: "\e602";
+.icon-sousuo:before {
+  content: "\e622";
 }
 
-.icon-fenlei2:before {
-  content: "\e606";
+.icon-aixin:before {
+  content: "\e65c";
 }
 
-.icon-xin:before {
-  content: "\e607";
+.icon-shouye:before {
+  content: "\e8c6";
 }
 
-.icon-shezhi:before {
-  content: "\e608";
+.icon-all-fill:before {
+  content: "\e718";
 }
 
-.icon-tupian:before {
-  content: "\e609";
-}
-
-.icon-tishi:before {
-  content: "\e60a";
-}
-
-.icon-fangdajing:before {
-  content: "\e60b";
-}
-
-.icon-guanbi:before {
-  content: "\e60c";
-}
-
-.icon-shuaxin:before {
+.icon-people_number:before {
   content: "\e60d";
-}
-
-.icon-zhankai:before {
-  content: "\e60e";
-}
-
-.icon-shouqi:before {
-  content: "\e60f";
-}
-
-.icon-saoyisao:before {
-  content: "\e611";
-}
-
-.icon-lianjie:before {
-  content: "\e612";
-}
-
-.icon-lajitong:before {
-  content: "\e613";
-}
-
-.icon-zuobian:before {
-  content: "\e614";
-}
-
-.icon-youbian:before {
-  content: "\e615";
-}
-
-.icon-xiabian:before {
-  content: "\e616";
-}
-
-.icon-shangbian:before {
-  content: "\e617";
-}
-
-.icon-zuji:before {
-  content: "\e618";
-}
-
-.icon-fenlei:before {
-  content: "\e61a";
-}
-
-.icon-gouwuche:before {
-  content: "\e61b";
-}
-
-.icon-zhiding:before {
-  content: "\e61c";
-}
-
-.icon-geren:before {
-  content: "\e61d";
-}
-
-.icon-geren1:before {
-  content: "\e61e";
-}
-
-.icon-fenxiang:before {
-  content: "\e620";
-}
-
-.icon-fenxiang2:before {
-  content: "\e621";
-}
-
-.icon-dingwei:before {
-  content: "\e626";
-}
-
-.icon-quanbu:before {
-  content: "\100ef";
 }
 

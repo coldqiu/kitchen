@@ -7,9 +7,7 @@ const App = createApp({
   onLaunch() {
     // 获取设备信息和胶囊按钮位置信息：
     const { top, height } = getMenuButtonBoundingClientRect()
-    console.log('top, height: ', top, height)
     const { statusBarHeight, platform } = getSystemInfoSync()
-    console.log('statusBarHeight: ', statusBarHeight)
 
     setStorageSync('statusBarHeight', statusBarHeight)
     setStorageSync('menuButtonHeight', height ? height : 32)

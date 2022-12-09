@@ -10,9 +10,13 @@
             <!-- <button class="back button">B</button>
             <view class="line"></view>
             <button class="home button">H</button> -->
-            <view @tap="handlerBack" class="back button">B</view>
+            <view @tap="handlerBack" class="back button">
+              <text class="iconfont icon-jiantou1"></text>
+            </view>
             <view class="line"></view>
-            <view class="home button">H</view>
+            <view @tap="switchToHome" class="home button">
+              <text class="iconfont icon-shouye"></text>
+            </view>
           </view>
         </view>
       </view>
@@ -69,7 +73,7 @@ export default {
 import { ref, computed, watchEffect, watch } from 'vue'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import InlineList from './InlineList/index.vue'
-import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick } from '@tarojs/taro';
+import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick, switchTab } from '@tarojs/taro';
 import { tempUpper } from '@/utils/data'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
@@ -173,6 +177,12 @@ function handlerBack() {
   // 分享了 search页，打开分享链接，左上角之后 返回home按钮（返回按钮不显示）
   // 【待处理】
   navigateBack()
+}
+// 返回首页
+function switchToHome() {
+  switchTab({
+    url: '/pages/index/index'
+  })
 }
 
 // 提交搜索 记录到storage 最多保存6个数据

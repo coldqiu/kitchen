@@ -15,10 +15,14 @@
       box-sizing: border-box;
       font-size: 0;
       .back {
-        font-size: 36px;
+        .iconfont {
+          font-size: 36px;
+        }
       }
       .home {
-        font-size: 36px;
+        .iconfont {
+          font-size: 40px;
+        }
       }
       .button {
         display: inline-block;

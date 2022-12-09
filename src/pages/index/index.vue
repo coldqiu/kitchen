@@ -4,14 +4,16 @@
       <view class="flex">
         Home
         <view @tap="navigateToSearch" :class="['search', scrollTop > 100 ? 'show' : '']">
-          <text class="iconfont icon-fangdajing"></text>
+          <text class="iconfont icon-sousuo"></text>
         </view>
       </view>
     </CompNavigationBar>
 
     <view class="input">
       <view @tap="navigateToSearch" class="flex">
-        <view class="icon">icon</view>
+        <view class="icon">
+          <text class="iconfont icon-sousuo"></text>
+        </view>
         <view class="text">搜索AA</view>
       </view>
     </view>
