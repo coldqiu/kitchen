@@ -176,9 +176,6 @@ function clickLink(link) {
 }
 // 返回
 function handlerBack() {
-  // 处理 直接进入search页的情况，路由栈中只有当前一条数据
-  // 分享了 search页，打开分享链接，左上角之后 返回home按钮（返回按钮不显示）
-  // 【待处理】
   navigateBack()
 }
 // 返回首页
@@ -186,6 +183,12 @@ function switchToHome() {
   switchTab({
     url: '/pages/index/index'
   })
+}
+//获取当前页面栈，判断 back 是否显示
+const pages = getCurrentPages()
+const backVisible = ref(true)
+if (pages.length === 1) {
+  backVisible.value = false
 }
 
 // 提交搜索 记录到storage 最多保存6个数据
@@ -243,13 +246,6 @@ function handlerScroll(e) {
     }
   }
   scrollTop.value = value
-}
-
-//获取当前页面栈，判断 back 是否显示
-const pages = getCurrentPages()
-const backVisible = ref(true)
-if (pages.length === 1) {
-  backVisible.value = false
 }
 
 
