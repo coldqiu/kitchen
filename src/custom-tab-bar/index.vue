@@ -10,7 +10,11 @@
     </cover-view>
   </cover-view>
 </template>
-
+<script>
+export default {
+  name: 'tab-bar'
+}
+</script>
 <script setup>
 import { ref } from 'vue'
 import { switchTab } from '@tarojs/taro'

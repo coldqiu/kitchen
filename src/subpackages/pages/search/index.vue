@@ -10,10 +10,10 @@
             <!-- <button class="back button">B</button>
             <view class="line"></view>
             <button class="home button">H</button> -->
-            <view @tap="handlerBack" class="back button">
+            <view v-if="backVisible" @tap="handlerBack" class="back button">
               <text class="iconfont icon-jiantou1"></text>
             </view>
-            <view class="line"></view>
+            <view v-if="backVisible" class="line"></view>
             <view @tap="switchToHome" class="home button">
               <text class="iconfont icon-shouye"></text>
             </view>
@@ -73,7 +73,10 @@ export default {
 import { ref, computed, watchEffect, watch } from 'vue'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import InlineList from './InlineList/index.vue'
-import { getStorageSync, navigateBack, setStorageSync, useReady, nextTick, switchTab } from '@tarojs/taro';
+import {
+  getStorageSync, navigateBack, setStorageSync, useReady,
+  nextTick, switchTab, getCurrentPages
+} from '@tarojs/taro';
 import { tempUpper } from '@/utils/data'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
@@ -242,6 +245,12 @@ function handlerScroll(e) {
   scrollTop.value = value
 }
 
+//获取当前页面栈，判断 back 是否显示
+const pages = getCurrentPages()
+const backVisible = ref(true)
+if (pages.length === 1) {
+  backVisible.value = false
+}
 
 
 </script>
