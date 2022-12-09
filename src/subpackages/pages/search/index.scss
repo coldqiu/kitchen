@@ -85,16 +85,16 @@
         padding-top: 15px;
         box-sizing: border-box;
         .icon {
-          background: #af1717;
-          width: 45px;
-          height: 45px;
+          height: 100%;
+          font-size: 36px;
+          color: #cdc7d0;
         }
       }
       // 下面两者 padding-right 需要相同
       .submit {
         color: rebeccapurple;
         padding: 15px 15px 0 15px;
-        margin-left: 25px;
+        margin-left: 15px;
         box-sizing: border-box;
         height: 100%;
         font-size: 36px;

@@ -29,7 +29,7 @@
           <!-- :focus="isInputFocus" -->
           <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
           <view v-show="clearVisible" class="clear">
-            <view @tap="handlerClear" class="icon"></view>
+            <text @tap="handlerClear" class="icon iconfont icon-closefill"></text>
           </view>
           <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">搜索</view>
           <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">取消</view>
