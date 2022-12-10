@@ -12,16 +12,13 @@ export default {
     }
   ],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    // backgroundTextStyle: 'light',
+    // navigationBarBackgroundColor: '#fff',
+    // navigationBarTitleText: 'WeChat',
+    // navigationBarTextStyle: 'black'
   },
   tabBar: {
     custom: true,
-    "color": "red",
-    "selectedColor": "green",
-    "backgroundColor": "blue",
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页"

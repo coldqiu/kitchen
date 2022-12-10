@@ -71,6 +71,11 @@ const config = {
     optimizeMainPackage: {
       enable: true
     },
+    // prerender: {
+    //   include: [
+    //     'pages/index/index',
+    //     'pages/two/index',]
+    // }
   },
   h5: {
     publicPath: '/',
