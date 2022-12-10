@@ -1,6 +1,6 @@
 export default {
   // navigationBarTitleText: '首页',
   navigationStyle: 'custom',
-  usingComponents: {},
+  // usingComponents: {},
   initialRenderingCache: "static"
 }
