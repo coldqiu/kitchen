@@ -18,3 +18,20 @@ const tempUpper = new Array(12).fill(0).map(() => {
 export {
   tempLower, tempUpper
 }
+
+export const tabbarList = [
+  {
+    pagePath: '/pages/index/index',
+    selectedIconPath: './images/index_actived.png',
+    iconPath: './images/index.png',
+    iconfont: 'icon-shouye',
+    text: '首页'
+  },
+  {
+    pagePath: '/pages/two/index',
+    selectedIconPath: './images/quanbu_actived.png',
+    iconPath: './images/quanbu.png',
+    iconfont: 'icon-all-fill',
+    text: '发现'
+  }
+]

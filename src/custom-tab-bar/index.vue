@@ -1,11 +1,20 @@
 <template>
   <cover-view class="tab-bar">
     <cover-view class="tab-bar-border"></cover-view>
-    <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item"
+    <cover-view v-for="(item, index) in tabbarList" :key="index" class="tab-bar-item"
       @tap="handlerSwitchTab(index, item.pagePath)">
-      <!-- <text :class="['iconfont', item.iconPath, selected === index ? 'selected' : '']"
-        :style="{ color: selected === index ? selectedColor : color }"></text> -->
-      <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
+
+      <text :class="['iconfont', item.iconfont, selected === index ? 'selected' : '']"
+        :style="{ color: selected === index ? selectedColor : color }"></text>
+
+      <!-- <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" /> -->
+
+      <!-- <cover-image class="img" :src="item.selectedIconPath" :style="{ display: selected === index ? '' : 'none' }">
+      </cover-image>
+      <cover-image class="img" :src="item.iconPath"
+        :style="{ display: selected !== index ? '' : 'none' }"></cover-image> -->
+
+
       <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
     </cover-view>
   </cover-view>
@@ -17,48 +26,33 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
-import { switchTab } from '@tarojs/taro'
+import { switchTab, nextTick } from '@tarojs/taro'
 import { useTabbarStore } from '@/stores/tabbar.js'
+import { tabbarList } from '@/utils/data'
 
 const tabbarStore = useTabbarStore()
+// console.log('tabbarStore: ', tabbarStore);
 const selected = ref(tabbarStore.index)
+// console.log('tabbarStore.index: ', tabbarStore.index);
+// const selected = ref(0)
+// console.log('selected: ', selected);
 const color = '#082c63'
 const selectedColor = 'rebeccapurple' // #663399 #082c63
-const list = [
-  {
-    pagePath: '/pages/index/index',
-    selectedIconPath: './images/index_actived.png',
-    iconPath: './images/index.png',
-    // iconPath: 'icon-shouye',
-    text: '首页'
-  },
-  {
-    pagePath: '/pages/two/index',
-    selectedIconPath: './images/quanbu_actived.png',
-    iconPath: './images/quanbu.png',
-    // iconPath: 'icon-all-fill',
-    text: '发现'
-  },
-  // {
-  //   pagePath: '/pages/cart/index',
-  //   selectedIconPath: '../images/tabbar_cart_on.png',
-  //   iconPath: '../images/tabbar_cart.png',
-  //   text: '购物车'
-  // },
-  // {
-  //   pagePath: '/pages/my/index',
-  //   selectedIconPath: '../images/tabbar_my_on.png',
-  //   iconPath: '../images/tabbar_my.png',
-  //   text: '个人中心'
-  // }
-]
+
 function handlerSwitchTab(index, url) {
+  // debugger;
+  console.log('index: ', index);
+
   setSelected(index)
-  switchTab({ url })
+  nextTick(() => {
+    switchTab({ url })
+  })
 }
 function setSelected(index) {
   // store.dispatch('setSelected', index)
-  tabbarStore.index = index
+  selected.value = index
+  // tabbarStore.index = index
+  tabbarStore.setTab(index)
 }
 
 </script>
@@ -101,6 +95,6 @@ function setSelected(index) {
 }
 
 .tab-bar-item cover-view {
-  font-size: 20px;
+  font-size: 26px;
 }
 </style>

@@ -1,6 +1,12 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync, setStorageSync } from '@tarojs/taro'
+import {
+  loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync,
+  setStorageSync, getCurrentPages, getCurrentInstance, nextTick
+} from '@tarojs/taro'
+// import { useTabbarStore } from '@/stores/tabbar.js'
+// 不能在 createApp 配置里 调用 pinia
+import { tabbarList } from '@/utils/data.js'
 import './app.scss'
 
 const App = createApp({
@@ -36,6 +42,23 @@ const App = createApp({
   },
 
   onShow(options) {
+    //获取当前页面栈
+    // 页面 onShow 时
+    nextTick(() => {
+      let instance = getCurrentInstance() // .page.getTabBar()
+      // instance.page 再模拟器 控制台 时有时无  奇怪！？
+      // console.log("instance.router.path", instance.router.path)
+      // console.log('tabbarList: ', tabbarList);
+      // tabbarList.forEach((item, index) => {
+      //   if (`/${item.pagePath}` === instance.router.path) {
+      //     setStorageSync('currentTabIndex', index)
+      //     // console.log('setStorageSync index: ', index);
+      //   } else {
+      //     setStorageSync('currentTabIndex', 0)
+      //   }
+      // })
+
+    })
   },
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
 })

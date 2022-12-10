@@ -43,15 +43,11 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
-import { useReady, usePageScroll, navigateTo } from '@tarojs/taro'
+import { useReady, usePageScroll, navigateTo, useLoad, useRouter } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
 // 假数据
 import { tempLower, tempUpper } from '../../utils/data'
-
-useReady(() => {
-  // console.log('useReady: ', useReady);
-})
 
 const foodClass = [
   { type: '蔬菜', list: tempLower },
