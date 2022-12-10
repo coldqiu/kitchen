@@ -15,7 +15,8 @@ export default {
     backgroundTextStyle: 'dark',
     // navigationBarBackgroundColor: '#fff',
     // navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    navigationBarTextStyle: 'black',
+    initialRenderingCache: 'static'
   },
   tabBar: {
     custom: true,
