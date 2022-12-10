@@ -1,5 +1,6 @@
 export default {
   navigationStyle: 'custom',
   enablePullDownRefresh: true,
-  usingComponents: {}
+  usingComponents: {},
+  initialRenderingCache: "static"
 }
