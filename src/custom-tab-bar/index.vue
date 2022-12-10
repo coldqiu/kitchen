@@ -4,15 +4,15 @@
     <cover-view v-for="(item, index) in tabbarList" :key="index" class="tab-bar-item"
       @tap="handlerSwitchTab(index, item.pagePath)">
 
-      <text :class="['iconfont', item.iconfont, selected === index ? 'selected' : '']"
-        :style="{ color: selected === index ? selectedColor : color }"></text>
+      <!-- <text :class="['iconfont', item.iconfont, selected === index ? 'selected' : '']"
+        :style="{ color: selected === index ? selectedColor : color }"></text> -->
 
       <!-- <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" /> -->
 
-      <!-- <cover-image class="img" :src="item.selectedIconPath" :style="{ display: selected === index ? '' : 'none' }">
+      <cover-image class="img" :src="item.selectedIconPath" :style="{ display: selected === index ? '' : 'none' }">
       </cover-image>
       <cover-image class="img" :src="item.iconPath"
-        :style="{ display: selected !== index ? '' : 'none' }"></cover-image> -->
+        :style="{ display: selected !== index ? '' : 'none' }"></cover-image>
 
 
       <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
