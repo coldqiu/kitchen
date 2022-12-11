@@ -1,10 +1,7 @@
 <template>
   <view class="page">
     <CompNavigationBar>
-      <view class="search_wrap">
-        <input @tap="navigateToSearch" class="search" />
-        view.
-      </view>
+      <SearchComp :disabled="true" :style="{ margin: '0 280rpx 0 35rpx' }" />
     </CompNavigationBar>
   </view>
 </template>
@@ -16,7 +13,7 @@ export default {
 </script>
 <script setup>
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
-
+import SearchComp from '@/components/SearchComp/index.vue'
 
 </script>
 <style lang='scss' scoped>
