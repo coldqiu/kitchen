@@ -1,4 +1,5 @@
 export default {
   navigationStyle: 'custom',
-  initialRenderingCache: "static"
+  initialRenderingCache: "static",
+  handleWebviewPreload: "static"
 }

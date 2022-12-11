@@ -2,5 +2,6 @@ export default {
   // navigationBarTitleText: '首页',
   navigationStyle: 'custom',
   // usingComponents: {},
-  initialRenderingCache: "static"
+  initialRenderingCache: "static",
+  handleWebviewPreload: "static"
 }

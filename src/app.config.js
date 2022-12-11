@@ -18,7 +18,7 @@ export default {
     // navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black',
     initialRenderingCache: 'static',
-    handleWebviewPreload: "auto"
+    handleWebviewPreload: "static"
   },
   tabBar: {
     custom: true,

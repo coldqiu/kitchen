@@ -1,7 +1,7 @@
 <template>
-  <cover-view class="tab-bar">
-    <cover-view class="tab-bar-border"></cover-view>
-    <cover-view v-for="(item, index) in tabbarList" :key="index" class="tab-bar-item"
+  <view class="tab-bar">
+    <view class="tab-bar-border"></view>
+    <view v-for="(item, index) in tabbarList" :key="item.pagePath" class="tab-bar-item"
       @tap="handlerSwitchTab(index, item.pagePath)">
 
       <view :class="['tabbar-icon iconfont', item.iconfont, selected === index ? 'selected' : '']"
@@ -15,9 +15,9 @@
         :style="{ display: selected !== index ? '' : 'none' }"></cover-image> -->
 
 
-      <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
-    </cover-view>
-  </cover-view>
+      <text :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</text>
+    </view>
+  </view>
 </template>
 <script>
 export default {
@@ -32,7 +32,9 @@ import { tabbarList } from '@/utils/data'
 
 const tabbarStore = useTabbarStore()
 // console.log('tabbarStore: ', tabbarStore);
-const selected = ref(tabbarStore.index)
+// const selected = ref(tabbarStore.index)
+// const selected = ref(0)
+const selected = -1
 // console.log('tabbarStore.index: ', tabbarStore.index);
 // const selected = ref(0)
 // console.log('selected: ', selected);
@@ -50,7 +52,7 @@ function handlerSwitchTab(index, url) {
 }
 function setSelected(index) {
   // store.dispatch('setSelected', index)
-  selected.value = index
+  // selected.value = index
   // tabbarStore.index = index
   tabbarStore.setTab(index)
 }
@@ -94,13 +96,13 @@ function setSelected(index) {
   height: 54px;
 }
 
-.tab-bar-item cover-view {
-  font-size: 26px;
+.tab-bar-item view {
+  font-size: 50px;
 }
 
 .tab-bar-item {
-  view {
-    font-size: 45px;
+  text {
+    font-size: 20px;
   }
 }
 </style>
