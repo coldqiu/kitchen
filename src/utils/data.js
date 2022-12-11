@@ -1,6 +1,6 @@
 import index_actived from '@/custom-tab-bar/images/index_actived.png'
 import index from '@/custom-tab-bar/images/index.png'
-import quanbu_actived  from '@/custom-tab-bar/images/quanbu_actived.png'
+import quanbu_actived from '@/custom-tab-bar/images/quanbu_actived.png'
 import quanbu from '@/custom-tab-bar/images/quanbu.png'
 // 造数据
 const temp = 'abcdefghijklmnopqrstuvwxyz'
@@ -41,5 +41,12 @@ export const tabbarList = [
     iconPath: quanbu,
     iconfont: 'icon-all-fill',
     text: '发现'
+  },
+  {
+    pagePath: '/pages/fav/index',
+    selectedIconPath: quanbu_actived,
+    iconPath: quanbu,
+    iconfont: 'icon-aixin',
+    text: '收藏'
   }
 ]

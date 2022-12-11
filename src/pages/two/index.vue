@@ -42,11 +42,11 @@ export default {
 import { ref } from 'vue'
 import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
-  hideLoading, showLoading, navigateTo
+  hideLoading, showLoading, navigateTo, useReady
 } from '@tarojs/taro'
 import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
-
 import './index.scss'
+
 
 const classData = new Array(12).fill(0).map((item, index) => { return index })
 const initList = new Array(26).fill(0).map((item, index) => {

@@ -4,10 +4,10 @@
     <cover-view v-for="(item, index) in tabbarList" :key="index" class="tab-bar-item"
       @tap="handlerSwitchTab(index, item.pagePath)">
 
-      <!-- <view :class="['iconfont', item.iconfont, selected === index ? 'selected' : '']"
-        :style="{ color: selected === index ? selectedColor : color }"></view> -->
+      <view :class="['tabbar-icon iconfont', item.iconfont, selected === index ? 'selected' : '']"
+        :style="{ color: selected === index ? selectedColor : color }"></view>
 
-      <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
+      <!-- <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" /> -->
 
       <!-- <cover-image class="img" :src="item.selectedIconPath" :style="{ display: selected === index ? '' : 'none' }">
       </cover-image>
@@ -96,5 +96,11 @@ function setSelected(index) {
 
 .tab-bar-item cover-view {
   font-size: 26px;
+}
+
+.tab-bar-item {
+  view {
+    font-size: 45px;
+  }
 }
 </style>

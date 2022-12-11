@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import {
   loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync,
-  setStorageSync, getCurrentPages, getCurrentInstance, nextTick
+  setStorageSync, getCurrentPages, getCurrentInstance, nextTick,
 } from '@tarojs/taro'
 // import { useTabbarStore } from '@/stores/tabbar.js'
 // 不能在 createApp 配置里 调用 pinia

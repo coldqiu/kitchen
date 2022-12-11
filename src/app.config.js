@@ -2,6 +2,7 @@ export default {
   pages: [
     'pages/index/index',
     'pages/two/index',
+    'pages/fav/index'
   ],
   subpackages: [
     {
@@ -16,16 +17,24 @@ export default {
     // navigationBarBackgroundColor: '#fff',
     // navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black',
-    initialRenderingCache: 'static'
+    initialRenderingCache: 'static',
+    handleWebviewPreload: "auto"
   },
   tabBar: {
     custom: true,
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/two/index",
-      "text": "发现"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/two/index",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/fav/index",
+        "text": "收藏"
+      }
+    ]
   }
 }
