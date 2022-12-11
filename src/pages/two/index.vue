@@ -42,7 +42,7 @@ export default {
 import { ref } from 'vue'
 import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
-  hideLoading, showLoading, navigateTo, useReady
+  hideLoading, showLoading, navigateTo, useReady, showShareMenu
 } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import { randomText } from '@/utils/data.js'
@@ -84,5 +84,7 @@ function navigateToSearch() {
     url: '/subpackages/pages/search/index'
   })
 }
+// 显示当前页面的转发按钮
+showShareMenu()
 </script>
 

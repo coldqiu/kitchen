@@ -44,7 +44,7 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
-import { useReady, usePageScroll, navigateTo, useLoad, useRouter } from '@tarojs/taro'
+import { useReady, usePageScroll, navigateTo, useLoad, useRouter, showShareMenu } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
 // 假数据
@@ -73,4 +73,6 @@ function navigateToSearch() {
 }
 // 点击搜索框【跳转“搜索页前”】 重置选中食材
 
+// 显示当前页面的转发按钮
+showShareMenu()
 </script>
