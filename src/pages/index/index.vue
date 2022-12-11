@@ -3,8 +3,8 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         Home
-        <view @tap="navigateToSearch" :class="['search', scrollTop > 100 ? 'show' : '']">
-          <text class="iconfont icon-sousuo"></text>
+        <view :class="['search', scrollTop > 100 ? 'show' : '']">
+          <text @tap="navigateToSearch" class="icon iconfont icon-sousuo"></text>
         </view>
       </view>
     </CompNavigationBar>

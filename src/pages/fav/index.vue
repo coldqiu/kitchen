@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <CompNavigationBar>
-      <SearchComp :disabled="true" :style="{ margin: '0 280rpx 0 35rpx' }" />
+      <SearchComp :disabled="true" :style="{ margin: '0 300rpx 0 35rpx' }" />
     </CompNavigationBar>
   </view>
 </template>
