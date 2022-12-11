@@ -1,5 +1,5 @@
 <template>
-  <view class="search_wrap" :style="props.customStyle">
+  <view class="search_wrap" @tap="navigateToSearch" :style="props.customStyle">
     <input :disabled="props.disabled" class="input" />
     <view class="placeholder">
       <text class="icon iconfont icon-sousuo"></text>
@@ -27,6 +27,10 @@ const props = defineProps({
     default: false
   }
 })
+
+function navigateToSearch() {
+  //
+}
 </script>
 <style lang='scss' scoped>
 
