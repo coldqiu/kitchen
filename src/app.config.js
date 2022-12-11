@@ -21,19 +21,30 @@ export default {
     handleWebviewPreload: "static"
   },
   tabBar: {
-    custom: true,
+    custom: false,
+    color: '#663399',
+    selectedColor: '#082c63',
+    backgroundColor: '#ffffff',
+    position: 'bottom',
+    borderStyle: 'white',
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": './custom-tab-bar/images/index.png',
+        "selectedIconPath": './custom-tab-bar/images/index_actived.png'
       },
       {
         "pagePath": "pages/two/index",
-        "text": "发现"
+        "text": "发现",
+        "iconPath": './custom-tab-bar/images/quanbu.png',
+        "selectedIconPath": './custom-tab-bar/images/quanbu_actived.png'
       },
       {
         "pagePath": "pages/fav/index",
-        "text": "收藏"
+        "text": "收藏",
+        "iconPath": './custom-tab-bar/images/fav.png',
+        "selectedIconPath": './custom-tab-bar/images/fav_actived.png'
       }
     ]
   }
