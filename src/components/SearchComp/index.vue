@@ -3,7 +3,7 @@
     <input :disabled="props.disabled" class="input" />
     <view class="placeholder">
       <text class="icon iconfont icon-sousuo"></text>
-      <text class="text">搜索我的收藏</text>
+      <text class="text">{{ props.placeholder }}</text>
     </view>
   </view>
 </template>
@@ -25,7 +25,11 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
-  }
+  },
+  placeholder: {
+    type: String,
+    default: 'ABCDEFGHIJK'
+  },
 })
 
 function navigateToSearch() {

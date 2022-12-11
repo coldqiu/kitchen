@@ -14,22 +14,23 @@
         <view class="icon">
           <text class="iconfont icon-sousuo"></text>
         </view>
-        <view class="text">搜索AA</view>
+        <view class="text">ABCDE</view>
       </view>
     </view>
-    <view class="hi">厨房里有什么？</view>
+    <view class="hi">kITCHEN？</view>
     <view class="voice">
-      <view class="desc">点击说出多个食材</view>
-      <text class="ps">如：土豆、番茄、牛肉等</text>
+      <view class="desc">{{ randomText(0, 10) }}</view>
+      <text class="ps">{{ randomText(0, 18) }}</text>
       <text class="icon iconfont icon-maikefeng"></text>
     </view>
-    <view class="hi">选食材</view>
+    <view class="hi">{{ randomText(0, 6) }}</view>
     <view class="food_class_wrap">
       <FoodClass :list="foodClass" @change="handleChange" />
     </view>
     <view :class="['search_wrap', checkedCount > 0 ? 'show' : '']">
       <view class="text">
-        查看搭配 <text class="count">{{ checkedCount }}</text>
+        {{ randomText(0, 12) }}
+        <text class="count">{{ checkedCount }}</text>
       </view>
     </view>
   </view>
@@ -44,14 +45,14 @@ export default {
 <script setup>
 import { ref } from 'vue'
 import { useReady, usePageScroll, navigateTo, useLoad, useRouter } from '@tarojs/taro'
-import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
+import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
 // 假数据
-import { tempLower, tempUpper } from '../../utils/data'
+import { tempLower, tempUpper, randomText } from '@/utils/data'
 
 const foodClass = [
-  { type: '蔬菜', list: tempLower },
-  { type: '肉类', list: tempUpper }
+  { type: 'ADC', list: tempLower },
+  { type: 'BEF', list: tempUpper }
 ]
 // 选中食材
 const checkedCount = ref(0)

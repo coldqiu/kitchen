@@ -50,3 +50,8 @@ export const tabbarList = [
     text: '收藏'
   }
 ]
+
+export function randomText(start = 0, end = 25) {
+  const temp = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase()
+  return temp.slice(start, end)
+}

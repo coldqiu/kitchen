@@ -7,9 +7,6 @@
         </view>
         <view class="menu_wrap">
           <view class="capsule">
-            <!-- <button class="back button">B</button>
-            <view class="line"></view>
-            <button class="home button">H</button> -->
             <view v-if="backVisible" @tap="handlerBack" class="back button">
               <text class="iconfont icon-jiantou1"></text>
             </view>
@@ -25,14 +22,14 @@
       <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll">
         <view class="input_wrap">
           <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
-            class="input" placeholder="今天想吃点啥？" />
+            class="input" placeholder="ABCDEFGHIJK" />
           <!-- :focus="isInputFocus" -->
           <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
           <view v-show="clearVisible" class="clear">
             <text @tap="handlerClear" class="icon iconfont icon-closefill"></text>
           </view>
-          <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">搜索</view>
-          <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">取消</view>
+          <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">{{ randomText(0, 3) }}</view>
+          <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">{{ randomText(3, 6) }}</view>
         </view>
         <view class="size_block"></view>
 
@@ -77,13 +74,13 @@ import {
   getStorageSync, navigateBack, setStorageSync, useReady,
   nextTick, switchTab, getCurrentPages
 } from '@tarojs/taro';
-import { tempUpper } from '@/utils/data'
+import { tempUpper, randomText } from '@/utils/data'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
 const navigationBarHeight = getStorageSync('navigationBarHeight')
 const navigationBarAndStatusBarHeight = statusBarHeight + navigationBarHeight
 
-const navigationTitle = ref('菜谱搜索')
+const navigationTitle = ref('ABCDEF')
 const linkListVisible = ref(false)
 const foodListVisible = ref(false)
 
@@ -208,9 +205,9 @@ function handerSubmit() {
 
 // Tab页
 const tabList = [
-  { type: 'normal', title: '综合' },
-  { type: 'rating', title: '评分最高' },
-  { type: 'flow', title: '做过最多' },
+  { type: 'normal', title: 'normal' },
+  { type: 'rating', title: 'rating' },
+  { type: 'flow', title: 'flow' },
 ]
 const currentTab = ref('normal')
 // 切换tab

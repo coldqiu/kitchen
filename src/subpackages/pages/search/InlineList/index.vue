@@ -2,8 +2,8 @@
   <view class="inline_list_container" :style="{ zIndex: zIndex }">
     <div class="inline_list">
       <view class="title">
-        <view class="text">搜索历史</view>
-        <view class="cancel">清空</view>
+        <view class="text">{{ randomText(7, 13) }}</view>
+        <view class="cancel">{{ randomText(10, 13) }}</view>
       </view>
       <view class="list">
         <view @tap="handlerClick(item)" class="item" v-for="item in tempSearchHistory" :key="item.name">{{ item.name }}
@@ -12,7 +12,7 @@
     </div>
     <div class="inline_list">
       <view class="title">
-        <view class="text">热门搜索</view>
+        <view class="text">{{ randomText(7, 13) }}</view>
       </view>
       <view class="list">
         <view @tap="handlerClick(item)" class="item" v-for="item in tempHotList" :key="item.name">{{ item.name }}</view>
@@ -23,6 +23,7 @@
 
 <script>
 import './index.scss'
+import { randomText } from '@/utils/data.js'
 export default {
   name: 'inline-list'
 }

@@ -2,15 +2,15 @@
   <view class="page">
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
-        发现
+        find
         <view @tap="navigateToSearch" class="search">
           <text class="iconfont icon-sousuo"></text>
         </view>
       </view>
     </CompNavigationBar>
     <view class="classWrap">
-      <view class="title">热门分类</view>
-      <view class="link">全部分类</view>
+      <view class="title">{{ randomText(0, 8) }}</view>
+      <view class="link">{{ randomText(0, 6) }}</view>
     </view>
     <view class="list">
       <view class="item" v-for="item in classData" :key="item">
@@ -44,7 +44,8 @@ import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
   hideLoading, showLoading, navigateTo, useReady
 } from '@tarojs/taro'
-import CompNavigationBar from '../../components/CompNavigationBar/index.vue';
+import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
+import { randomText } from '@/utils/data.js'
 import './index.scss'
 
 
