@@ -127,8 +127,8 @@ function handlerClear() {
 
 }
 // 点击 取消 有两种状态导致不同结果：状态1，已经搜索过了，显示foodList
-// 状态2，还没搜索，回到上一页；还要兜底特殊情况：当没有上一页时（分享了一个空白的搜索页）  
-// 【待处理】
+// 状态2，还没搜索，回到上一页；还要兜底特殊情况：当没有上一页时（分享了一个空白的搜索页） 【已处理】  
+
 function handlerCancel() {
   linkListVisible.value = false
   foodListVisible.value = true
@@ -215,7 +215,7 @@ function changeTab(tab) {
   currentTab.value = tab.type
 }
 
-// foodList滚动 需要动态设置dom的高度 【待处理】
+// foodList滚动 需要动态设置dom的高度 【待处理】【实现与参考小程序不同，不用处理】
 // 设置scroll-view height
 const isScroll = ref(false)
 const scrollViewHeight = ref({})

@@ -1,6 +1,5 @@
 <template>
   <view class="food_class">
-    <!-- <text>page3 HRM</text> -->
     <view class="wrap" v-for="itemA in foodList" :key="itemA.type">
       <view class="title">{{ itemA.type }}</view>
       <view class="list">

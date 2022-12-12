@@ -59,7 +59,7 @@ const checkedCount = ref(0)
 function handleChange(count) {
   checkedCount.value = count
 }
-// usePageScroll 顶部搜索图标 动画
+// 顶部搜索图标 动画
 const scrollTop = ref(0)
 usePageScroll(res => {
   scrollTop.value = res.scrollTop
