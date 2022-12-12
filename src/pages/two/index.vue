@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="long-list">
-      <view class="item" v-for="item in longList" :key="item">
+      <view @tap="navigateFoodInfo(item)" class="item" v-for="item in longList" :key="item">
         <view class="content" :style="{ background: setColor(item) }">
 
         </view>
@@ -82,6 +82,12 @@ function setColor(num) {
 function navigateToSearch() {
   navigateTo({
     url: '/subpackages/pages/search/index'
+  })
+}
+function navigateFoodInfo(food) {
+  // 工具函数 拼接url 【待处理】
+  navigateTo({
+    url: `/subpackages/pages/foodInfo/index?id=${food}`
   })
 }
 // 显示当前页面的转发按钮

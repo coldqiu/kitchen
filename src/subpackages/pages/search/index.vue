@@ -1,23 +1,6 @@
 <template>
   <view class="page">
-    <CompNavigationBar>
-      <view class="flex">
-        <view class="title">
-          {{ navigationTitle }}
-        </view>
-        <view class="menu_wrap">
-          <view class="capsule">
-            <view v-if="backVisible" @tap="handlerBack" hover-class="hover_class_back" class="back button">
-              <text class="iconfont icon-jiantou1"></text>
-            </view>
-            <view v-if="backVisible" class="line"></view>
-            <view @tap="switchToHome" hover-class="hover_class_home" class="home button">
-              <text class="iconfont icon-shouye"></text>
-            </view>
-          </view>
-        </view>
-      </view>
-    </CompNavigationBar>
+    <InfoNavigationBar title="ABCDEFG" />
     <view class="search" :style="{ top: navigationBarAndStatusBarHeight + 'px' }">
       <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll">
         <view class="input_wrap">
@@ -69,6 +52,7 @@ export default {
 <script setup>
 import { ref, computed, watchEffect, watch } from 'vue'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
+import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import InlineList from './InlineList/index.vue'
 import {
   getStorageSync, navigateBack, setStorageSync, useReady,
@@ -170,22 +154,6 @@ function clickLink(link) {
   nextTick(() => {
     linkListVisible.value = false
   })
-}
-// 返回
-function handlerBack() {
-  navigateBack()
-}
-// 返回首页
-function switchToHome() {
-  switchTab({
-    url: '/pages/index/index'
-  })
-}
-//获取当前页面栈，判断 back 是否显示
-const pages = getCurrentPages()
-const backVisible = ref(true)
-if (pages.length === 1) {
-  backVisible.value = false
 }
 
 // 提交搜索 记录到storage 最多保存6个数据

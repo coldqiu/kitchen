@@ -8,7 +8,8 @@ export default {
     {
       root: 'subpackages',
       pages: [
-        'pages/search/index'
+        'pages/search/index',
+        'pages/foodInfo/index'
       ]
     }
   ],
