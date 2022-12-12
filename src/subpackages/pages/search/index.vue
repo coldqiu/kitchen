@@ -7,11 +7,11 @@
         </view>
         <view class="menu_wrap">
           <view class="capsule">
-            <view v-if="backVisible" @tap="handlerBack" class="back button">
+            <view v-if="backVisible" @tap="handlerBack" hover-class="hover_class_back" class="back button">
               <text class="iconfont icon-jiantou1"></text>
             </view>
             <view v-if="backVisible" class="line"></view>
-            <view @tap="switchToHome" class="home button">
+            <view @tap="switchToHome" hover-class="hover_class_home" class="home button">
               <text class="iconfont icon-shouye"></text>
             </view>
           </view>
