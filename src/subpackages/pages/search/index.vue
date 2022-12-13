@@ -1,11 +1,11 @@
 <template>
   <view class="page">
-    <InfoNavigationBar title="ABCDEFG" />
+    <InfoNavigationBar :title="navigationTitle" />
     <view class="search" :style="{ top: navigationBarAndStatusBarHeight + 'px' }">
       <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll">
         <view class="input_wrap">
           <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
-            class="input" placeholder="ABCDEFGHIJK" />
+            class="input" placeholder="placeholder" />
           <!-- :focus="isInputFocus" -->
           <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
           <view v-show="clearVisible" class="clear">
@@ -38,7 +38,7 @@
     </view>
     <view class="size_block"></view>
 
-    <InlineList @checked="handlerChecked" :zIndex="10" />
+    <InlineList @checked="handlerChecked" zIndex="10" />
   </view>
 </template>
 
@@ -51,12 +51,11 @@ export default {
 </script>
 <script setup>
 import { ref, computed, watchEffect, watch } from 'vue'
-import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import InlineList from './InlineList/index.vue'
 import {
   getStorageSync, navigateBack, setStorageSync, useReady,
-  nextTick, switchTab, getCurrentPages
+  nextTick, switchTab, getCurrentPages, useRouter, useTabItemTap
 } from '@tarojs/taro';
 import { tempUpper, randomText } from '@/utils/data'
 
@@ -64,12 +63,12 @@ const statusBarHeight = getStorageSync('statusBarHeight')
 const navigationBarHeight = getStorageSync('navigationBarHeight')
 const navigationBarAndStatusBarHeight = statusBarHeight + navigationBarHeight
 
-const navigationTitle = ref('ABCDEF')
+const navigationTitle = ref('food search page')
 const linkListVisible = ref(false)
 const foodListVisible = ref(false)
 
 // input 相关
-const isInputFocus = ref(true)
+const isInputFocus = ref(false)
 const inputValue = ref('')
 const $refInput = ref(null)
 // 默认进入搜索页时focus input
@@ -137,8 +136,6 @@ const clearVisible = computed(() => {
 })
 // watch(inputValue, (val) => {
 // })
-// const 
-
 
 watchEffect(() => {
   // console.log('foodListVisible.value', foodListVisible.value)
@@ -149,11 +146,9 @@ watchEffect(() => {
 const linkList = ref('ABCDE'.split(""))
 // 点击关联结果
 function clickLink(link) {
+  console.log('clickLink: ', link);
   inputValue.value = link
   foodListVisible.value = true
-  nextTick(() => {
-    linkListVisible.value = false
-  })
 }
 
 // 提交搜索 记录到storage 最多保存6个数据
@@ -212,6 +207,10 @@ function handlerScroll(e) {
   }
   scrollTop.value = value
 }
-
-
+// url参数
+const { params } = useRouter()
+if (params.name && params.name.length > 0) {
+  inputValue.value = params.name
+  foodListVisible.value = true;
+}
 </script>

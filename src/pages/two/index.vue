@@ -3,7 +3,7 @@
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         find
-        <view @tap="navigateToSearch" class="search">
+        <view @tap="navigateToSearch()" class="search">
           <text class="iconfont icon-sousuo"></text>
         </view>
       </view>
@@ -13,12 +13,10 @@
       <view class="link">{{ randomText(0, 6) }}</view>
     </view>
     <view class="list">
-      <view class="item" v-for="item in classData" :key="item">
+      <view @tap="navigateToSearch(item)" class="item" v-for="item in classData" :key="item">
         <div class="content">
           <div class="bottom">
-            <div class="text">
-              {{ item }}
-            </div>
+            <div class="text"> {{ item }} </div>
           </div>
         </div>
       </view>
@@ -79,9 +77,9 @@ function setColor(num) {
   return `rgba(89, 54, 124, ${num})`
 }
 // 跳转
-function navigateToSearch() {
+function navigateToSearch(name = '') {
   navigateTo({
-    url: '/subpackages/pages/search/index'
+    url: `/subpackages/pages/search/index?name=${name}`
   })
 }
 function navigateFoodInfo(food) {
