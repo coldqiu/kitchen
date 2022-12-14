@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import './index.scss'
 export default {
   name: 'comp-navigation-bar',
 }
@@ -33,3 +32,6 @@ const props = defineProps({
   }
 })
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

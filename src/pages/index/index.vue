@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import './index.scss'
 export default {
   name: 'page-one',
 }
@@ -76,3 +75,6 @@ function navigateToSearch() {
 // 显示当前页面的转发按钮
 showShareMenu()
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

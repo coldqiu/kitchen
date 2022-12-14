@@ -16,6 +16,6 @@ import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import SearchComp from '@/components/SearchComp/index.vue'
 
 </script>
-<style lang='scss' scoped>
-
+<style scoped lang="scss">
+@import './index.scss'
 </style>

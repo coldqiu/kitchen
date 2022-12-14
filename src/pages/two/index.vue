@@ -44,7 +44,6 @@ import {
 } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import { randomText } from '@/utils/data.js'
-import './index.scss'
 
 
 const classData = new Array(12).fill(0).map((item, index) => { return index })
@@ -98,3 +97,6 @@ function navigateToClass() {
 showShareMenu()
 </script>
 
+<style scoped lang="scss">
+@import './index.scss'
+</style>

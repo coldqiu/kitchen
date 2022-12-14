@@ -33,7 +33,6 @@ import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import {
   navigateBack, switchTab, getCurrentPages
 } from '@tarojs/taro';
-import './index.scss'
 
 const props = defineProps({
   title: String
@@ -56,6 +55,6 @@ if (pages.length === 1) {
   backVisible.value = false
 }
 </script>
-<style lang='scss' scoped>
-
+<style scoped lang="scss">
+@import './index.scss'
 </style>

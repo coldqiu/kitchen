@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import './index.scss'
 import { randomText } from '@/utils/data.js'
 export default {
   name: 'inline-list'
@@ -50,3 +49,6 @@ function handlerClick(item) {
 }
 
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

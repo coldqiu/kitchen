@@ -70,12 +70,11 @@ export default {
 import { useRouter } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import { tempUpper, randomText } from '@/utils/data.js'
-import './index.scss'
 
 const { params } = useRouter()
 // console.log('router: ', router);
 const tmpList = tempUpper.slice(0, 3)
 </script>
-<style lang='scss'>
-
+<style scoped lang="scss">
+@import './index.scss'
 </style>

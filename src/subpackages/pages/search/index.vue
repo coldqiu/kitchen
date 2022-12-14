@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import './index.scss'
-
 export default {
   name: 'search-page',
 }
@@ -214,3 +212,6 @@ if (params.name && params.name.length > 0) {
   foodListVisible.value = true;
 }
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

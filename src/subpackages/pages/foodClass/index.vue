@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import './index.scss'
 export default {
   name: 'class-page'
 }
@@ -70,3 +69,6 @@ function navigateToSearch(name) {
   })
 }
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

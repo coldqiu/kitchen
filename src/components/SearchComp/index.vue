@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import './index.scss'
 export default {
   name: 'search-comp'
 }
@@ -36,6 +35,6 @@ function navigateToSearch() {
   //
 }
 </script>
-<style lang='scss' scoped>
-
+<style scoped lang="scss">
+@import './index.scss'
 </style>
