@@ -56,12 +56,12 @@ const activedClass = ref(initClass)
 const activedClassList = ref(initClass.split(""))
 // 切换时 滚动条置顶
 function handlerCurrentClass(item) {
-  activedClass.value = item.name
-  activedClassList.value = item.name.split("")
   pageScrollTo({
     scrollTop: 0,
     duration: 0
   })
+  activedClass.value = item.name
+  activedClassList.value = item.name.split("")
 }
 // 跳转 search
 function navigateToSearch(name) {
