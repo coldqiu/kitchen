@@ -4,7 +4,6 @@
     top: 0;
     left: 0;
     right: 0;
-    // background: rgb(200, 165, 236);
     font-size: 0;
     .input_wrap {
       display: flex;
@@ -111,19 +110,9 @@
         height: 0px;
         position: absolute;
       }
-      .list {
-        // height: 100vh;
-        // overflow: scroll;
-        padding-top: 80px;
-        margin: 0 35px;
-        padding-bottom: 100px;
-        .item {
-          font-size: 36px;
-          // background-color: #f78f8f;
-          margin: 15px 0;
-          padding: 100px 0;
-        }
-      }
+    }
+    .safe_area {
+      height: env(safe-area-inset-bottom);
     }
   }
   .size_block {

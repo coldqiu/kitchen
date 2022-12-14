@@ -28,12 +28,10 @@
               {{ item.title }}
             </view>
           </view>
-          <view class="list">
-            <view v-for="item in tempUpper" :key="item.name" class="item">
-              {{ item.name }}
-            </view>
-          </view>
+          <FoodList :foodList="foodList" />
+          <!-- search page 的交互感觉有点不流畅【待优化】 代码组织形式可以优化【待优化】 -->
         </view>
+        <view class="safe_area"></view>
       </scroll-view>
     </view>
     <view class="size_block"></view>
@@ -54,6 +52,7 @@ export default {
 import { ref, computed, watchEffect, watch } from 'vue'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import InlineList from './InlineList/index.vue'
+import FoodList from './FoodList/index.vue'
 import {
   getStorageSync, navigateBack, setStorageSync, useReady,
   nextTick, switchTab, getCurrentPages, useRouter, useTabItemTap
@@ -178,6 +177,10 @@ const currentTab = ref('normal')
 function changeTab(tab) {
   currentTab.value = tab.type
 }
+
+const foodList = ref([])
+foodList.value = new Array(10).fill(0).map((item, index) => { return index })
+console.log('foodList: ', foodList);
 
 // foodList滚动 需要动态设置dom的高度 【待处理】【实现与参考小程序不同，不用处理】
 // 设置scroll-view height
