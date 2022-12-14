@@ -10,7 +10,7 @@
     </CompNavigationBar>
     <view class="classWrap">
       <view class="title">{{ randomText(0, 8) }}</view>
-      <view class="link">{{ randomText(0, 6) }}</view>
+      <view @tap="navigateToClass" class="link">{{ randomText(0, 6) }}</view>
     </view>
     <view class="list">
       <view @tap="navigateToSearch(item)" class="item" v-for="item in classData" :key="item">
@@ -86,6 +86,12 @@ function navigateFoodInfo(food) {
   // 工具函数 拼接url 【待处理】
   navigateTo({
     url: `/subpackages/pages/foodInfo/index?id=${food}`
+  })
+}
+// 跳转 
+function navigateToClass() {
+  navigateTo({
+    url: '/subpackages/pages/foodClass/index'
   })
 }
 // 显示当前页面的转发按钮

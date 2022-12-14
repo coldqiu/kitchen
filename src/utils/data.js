@@ -19,8 +19,16 @@ const tempUpper = new Array(12).fill(0).map(() => {
   }
 })
 
+const tempFoodClass = new Array(12).fill(0).map(() => {
+  let index = Math.ceil(Math.random() * 16)
+  let length = Math.ceil(3 + Math.random() * 3)
+  return {
+    checked: false, name: (temp.slice(index, index + length)).toUpperCase()
+  }
+})
+
 export {
-  tempLower, tempUpper
+  tempLower, tempUpper, tempFoodClass
 }
 
 export const tabbarList = [

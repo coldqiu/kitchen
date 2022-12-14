@@ -9,7 +9,8 @@ export default {
       root: 'subpackages',
       pages: [
         'pages/search/index',
-        'pages/foodInfo/index'
+        'pages/foodInfo/index',
+        'pages/foodClass/index'
       ]
     }
   ],
