@@ -16,7 +16,9 @@
 <script>
 import { reactive, ref, defineEmits } from 'vue'
 import { vibrateShort } from '@tarojs/taro'
-import './index.scss'
+if (process.env.TARO_ENV === 'weapp') {
+  require('./index.scss')
+}
 
 export default {
   name: 'food-class',
@@ -44,3 +46,6 @@ function handleClick(e, food) {
 }
 
 </script>
+<style scoped lang="scss">
+@import './index.scss'
+</style>

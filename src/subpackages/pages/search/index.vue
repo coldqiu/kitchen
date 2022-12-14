@@ -43,6 +43,9 @@
 </template>
 
 <script>
+if (process.env.TARO_ENV === 'weapp') {
+  require('./index.scss')
+}
 export default {
   name: 'search-page',
 }
