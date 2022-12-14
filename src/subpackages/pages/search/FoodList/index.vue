@@ -40,9 +40,9 @@ defineProps({
 })
 
 // 点击 菜名,向外抛出事件
-const emit = defineEmits(['checked'])
+const emit = defineEmits(['toFoodInfo'])
 function handlerClick(item) {
-  emit('checked', item)
+  emit('toFoodInfo', item)
 }
 
 </script>

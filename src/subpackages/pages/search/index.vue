@@ -28,7 +28,7 @@
               {{ item.title }}
             </view>
           </view>
-          <FoodList :foodList="foodList" />
+          <FoodList @to-food-info="navigateToFoodInfo" :foodList="foodList" />
           <!-- search page 的交互感觉有点不流畅【待优化】 代码组织形式可以优化【待优化】 -->
         </view>
         <view class="safe_area"></view>
@@ -55,7 +55,7 @@ import InlineList from './InlineList/index.vue'
 import FoodList from './FoodList/index.vue'
 import {
   getStorageSync, navigateBack, setStorageSync, useReady,
-  nextTick, switchTab, getCurrentPages, useRouter, useTabItemTap
+  nextTick, switchTab, getCurrentPages, useRouter, useTabItemTap, navigateTo
 } from '@tarojs/taro';
 import { tempUpper, randomText } from '@/utils/data'
 
@@ -216,6 +216,12 @@ const { params } = useRouter()
 if (params.name && params.name.length > 0) {
   inputValue.value = params.name
   foodListVisible.value = true;
+}
+// 跳转
+function navigateToFoodInfo(id) {
+  navigateTo({
+    url: `/subpackages/pages/foodInfo/index?id=${id}`
+  })
 }
 </script>
 <style scoped lang="scss">
