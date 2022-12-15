@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     .add_wrap {
+      width: 130px;
       margin-right: 20px;
       .label {
         width: 100%;
@@ -40,27 +41,32 @@
         }
       }
     }
-    scroll-view {
-      width: 100%;
-      .ul {
-        display: flex;
-        flex-wrap: nowrap;
-        .li {
-          .label {
-            display: flex;
-            align-items: center;
-            margin: 0 15px;
-            padding: 0 25px;
-            height: 68px;
-            line-height: 68px;
-            border-radius: 34px;
-            background: rgb(248, 248, 248);
-            font-size: 36px;
-            .icon-shanchu {
-              font-size: 28px;
-              margin-left: 20px;
+    .scroll_wrap {
+      width: calc(100vw - 185px);
+      scroll-view {
+        width: 100%;
+        .ul {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          font-size: 0;
+          .li {
+            .label {
+              display: flex;
+              align-items: center;
+              margin-right: 35px;
+              padding: 0 25px;
               height: 68px;
               line-height: 68px;
+              border-radius: 34px;
+              background: rgb(248, 248, 248);
+              font-size: 36px;
+              .icon-shanchu {
+                font-size: 28px;
+                margin-left: 20px;
+                height: 68px;
+                line-height: 68px;
+              }
             }
           }
         }

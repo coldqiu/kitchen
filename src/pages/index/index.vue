@@ -25,7 +25,7 @@
     </view>
     <view class="hi">{{ randomText(0, 6) }}</view>
     <view class="food_class_wrap">
-      <FoodClass :list="foodClass" @change="handleChange" />
+      <FoodClass :list="dataFoodList" @change="handleChange" />
     </view>
     <view @tap="navigateToSearchResult(true)" :class="['search_wrap', foodList.length > 0 ? 'show' : '']">
       <view class="text">
@@ -56,6 +56,8 @@ const foodClass = [
   { type: 'ADC', list: tempLower },
   { type: 'BEF', list: tempUpper }
 ]
+const dataFoodList = ref(foodClass)
+
 // 选中食材
 const foodList = ref([])
 function handleChange(checkedList) {
@@ -77,6 +79,12 @@ function navigateToSearch() {
 function navigateToSearchResult() {
   let list = unref(foodList)
   // 重置选中食材
+  foodList.value = []
+  dataFoodList.value.forEach(itemA => {
+    itemA.list.forEach(itemB => {
+      itemB.checked = false
+    })
+  })
   navigateTo({
     url: `/subpackages/pages/searchResult/index?list=${JSON.stringify(list)}`
   })

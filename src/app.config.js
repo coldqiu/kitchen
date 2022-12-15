@@ -11,7 +11,8 @@ export default {
         'pages/search/index',
         'pages/foodInfo/index',
         'pages/foodClass/index',
-        'pages/searchResult/index'
+        'pages/searchResult/index',
+        'pages/add/index'
       ]
     }
   ],
