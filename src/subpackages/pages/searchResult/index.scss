@@ -1,0 +1,70 @@
+.page {
+  padding-bottom: env(safe-area-inset-bottom);
+  .size_box {
+    width: 100%;
+    height: 80rpx;
+  }
+  .label_wrap {
+    width: 100%;
+    padding: 0 35px;
+    box-sizing: border-box;
+    margin-right: 20px;
+    height: 150px;
+    line-height: 150rpx;
+    font-size: 0;
+    z-index: 10;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    .add_wrap {
+      margin-right: 20px;
+      .label {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: 0 25px;
+        height: 68px;
+        line-height: 68px;
+        border-radius: 34px;
+        background: rgb(248, 248, 248);
+        font-size: 36px;
+        .icon-jia {
+          font-size: 28px;
+          margin-left: 20px;
+          height: 68px;
+          line-height: 68px;
+        }
+      }
+    }
+    scroll-view {
+      width: 100%;
+      .ul {
+        display: flex;
+        flex-wrap: nowrap;
+        .li {
+          .label {
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+            padding: 0 25px;
+            height: 68px;
+            line-height: 68px;
+            border-radius: 34px;
+            background: rgb(248, 248, 248);
+            font-size: 36px;
+            .icon-shanchu {
+              font-size: 28px;
+              margin-left: 20px;
+              height: 68px;
+              line-height: 68px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

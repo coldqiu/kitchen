@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { reactive, ref, defineEmits } from 'vue'
+import { reactive, ref, defineEmits, toRaw } from 'vue'
 import { vibrateShort } from '@tarojs/taro'
 if (process.env.TARO_ENV === 'weapp') {
   require('./index.scss')
@@ -31,17 +31,21 @@ const props = defineProps({
   }
 })
 const foodList = reactive(props.list)
-
-const checkedCount = ref(0)
 const emit = defineEmits(['change'])
 function handleClick(e, food) {
   food.checked = !food.checked
-  if (food.checked) {
-    checkedCount.value = checkedCount.value + 1
-  } else {
-    checkedCount.value = checkedCount.value - 1;
-  }
-  emit('change', checkedCount.value)
+  let checkedList = []
+  foodList[0].list.forEach(item => {
+    if (item.checked) {
+      checkedList.push(toRaw(item))
+    }
+  })
+  foodList[1].list.forEach(item => {
+    if (item.checked) {
+      checkedList.push(toRaw(item))
+    }
+  })
+  emit('change', checkedList)
   vibrateShort({ type: 'light' })
 }
 

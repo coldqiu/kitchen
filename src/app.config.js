@@ -10,7 +10,8 @@ export default {
       pages: [
         'pages/search/index',
         'pages/foodInfo/index',
-        'pages/foodClass/index'
+        'pages/foodClass/index',
+        'pages/searchResult/index'
       ]
     }
   ],

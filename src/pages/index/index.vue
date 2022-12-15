@@ -27,10 +27,10 @@
     <view class="food_class_wrap">
       <FoodClass :list="foodClass" @change="handleChange" />
     </view>
-    <view :class="['search_wrap', checkedCount > 0 ? 'show' : '']">
+    <view @tap="navigateToSearchResult(true)" :class="['search_wrap', foodList.length > 0 ? 'show' : '']">
       <view class="text">
         {{ randomText(0, 12) }}
-        <text class="count">{{ checkedCount }}</text>
+        <text class="count">{{ foodList.length }}</text>
       </view>
     </view>
   </view>
@@ -45,7 +45,7 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import { ref, unref } from 'vue'
 import { useReady, usePageScroll, navigateTo, useLoad, useRouter, showShareMenu } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import FoodClass from './FoodClass/index.vue'
@@ -57,9 +57,9 @@ const foodClass = [
   { type: 'BEF', list: tempUpper }
 ]
 // 选中食材
-const checkedCount = ref(0)
-function handleChange(count) {
-  checkedCount.value = count
+const foodList = ref([])
+function handleChange(checkedList) {
+  foodList.value = checkedList
 }
 // 顶部搜索图标 动画
 const scrollTop = ref(0)
@@ -67,14 +67,20 @@ usePageScroll(res => {
   scrollTop.value = res.scrollTop
   // if (res.scrollTop > 100) //写在 template
 })
-// 点击搜索icon 跳转 search page
+// 跳转 search page
 function navigateToSearch() {
   navigateTo({
     url: '/subpackages/pages/search/index'
   })
 }
-// 点击搜索框【跳转“搜索页前”】 重置选中食材
-
+// 跳转 searchResult page
+function navigateToSearchResult() {
+  let list = unref(foodList)
+  // 重置选中食材
+  navigateTo({
+    url: `/subpackages/pages/searchResult/index?list=${JSON.stringify(list)}`
+  })
+}
 // 显示当前页面的转发按钮
 showShareMenu()
 </script>

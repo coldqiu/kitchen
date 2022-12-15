@@ -1,7 +1,7 @@
 <template>
   <div class="list_wrap">
     <view class="ul">
-      <view @tap="handlerClick(item)" class="li" v-for="item in foodList" :key="item">{{ item }}
+      <view @tap="handlerClick(item)" class="li" v-for="item in foodList" :key="item">
         <view class="img_wrap">
           <view class="image"></view>
         </view>
