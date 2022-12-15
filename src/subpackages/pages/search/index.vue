@@ -11,13 +11,13 @@
           <view v-show="clearVisible" class="clear">
             <text @tap="handlerClear" class="icon iconfont icon-closefill"></text>
           </view>
-          <view v-if="inputValue.length > 0" @tap="handerSubmit" class="submit">{{ randomText(0, 3) }}</view>
-          <view v-if="!foodListVisible" @tap="handlerCancel" class="cancel">{{ randomText(3, 6) }}</view>
+          <view v-show="inputValue.length > 0" @tap="handerSubmit" class="submit">{{ randomText(0, 3) }}</view>
+          <view v-show="!foodListVisible" @tap="handlerCancel" class="cancel">{{ randomText(3, 6) }}</view>
         </view>
 
         <view class="size_block"></view>
 
-        <view v-if="linkListVisible" class="result_wrap">
+        <view v-show="linkListVisible" class="result_wrap">
           <view class="link_list">
             <view @tap="clickLink(item)" v-for="item in linkList" :key="item" class="item">{{ item }}</view>
           </view>

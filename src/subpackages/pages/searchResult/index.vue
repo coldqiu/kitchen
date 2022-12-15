@@ -1,6 +1,6 @@
 <template>
   <view class="page">
-    <InfoNavigationBar title="结果搜索页" />
+    <InfoNavigationBar title="搜索结果" />
     <view class="label_wrap">
       <view class="add_wrap">
         <view @tap="navigateToAdd" class="label add">add
@@ -8,7 +8,8 @@
         </view>
       </view>
       <view class="scroll_wrap">
-        <scroll-view :scroll-x="true" :show-scrollbar="false">
+        <scroll-view class="scroll_view" :scroll-x="true" :show-scrollbar="false" enhanced="true"
+          :style="{ width: `calc(100vw - 185rpx)` }">
           <view class="ul">
             <view v-for="(item, index) in checkedList" :key="item.name" class="li">
               <view class="label">

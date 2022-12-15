@@ -2,7 +2,7 @@
   padding-bottom: env(safe-area-inset-bottom);
   .size_box {
     width: 100%;
-    height: 80rpx;
+    height: 80px;
   }
   .label_wrap {
     width: 100%;
@@ -35,16 +35,14 @@
         font-size: 36px;
         .icon-jia {
           font-size: 28px;
-          margin-left: 20px;
+          margin-left: 10px;
           height: 68px;
           line-height: 68px;
         }
       }
     }
     .scroll_wrap {
-      width: calc(100vw - 185px);
-      scroll-view {
-        width: 100%;
+      .scroll_view {
         .ul {
           display: flex;
           flex-wrap: nowrap;
