@@ -2,11 +2,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import {
   loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync,
-  setStorageSync, getCurrentPages, getCurrentInstance, nextTick,
+  setStorageSync, getStorageSync, getCurrentPages, getCurrentInstance, nextTick,
 } from '@tarojs/taro'
-// import { useTabbarStore } from '@/stores/tabbar.js'
-// 不能在 createApp 配置里 调用 pinia
-import { tabbarList } from '@/utils/data.js'
 import './app.scss'
 
 const App = createApp({
@@ -26,19 +23,27 @@ const App = createApp({
       setStorageSync('navigationBarHeight', platform === 'android' ? 48 : 40)
     }
 
+    // env.USER_DATA_PATH
     // 加载字体 【网络 抛出 403】【处理，oss服务器 referer添加白名单 微信小程序】
-    loadFontFace({
-      global: true,
-      family: 'dyh',
-      source: 'https://cdn.coldqiu.com/SmileySans-Oblique.ttf',
-      // scopes: ['webview', 'native'],
-      success: () => {
-        console.log("load font success")
-      },
-      fail: () => {
-        console.log("load font fail")
-      }
-    })
+    // let fontLoaded = getStorageSync('fontLoaded')
+    // console.log('fontLoaded: ', fontLoaded);
+    // if (!fontLoaded) {
+    // loadFontFace({
+    //   global: true,
+    //   family: 'dyh',
+    //   // source: 'https://cdn.coldqiu.com/SmileySans-Oblique.ttf',
+    //   source: 'url("https://cdn.coldqiu.com/SmileySans-Oblique.ttf")',
+    //   // scopes: ['webview', 'native'],
+    //   success: () => {
+    //     console.log("load font success")
+    //   },
+    //   fail: () => {
+    //     console.log("load font fail")
+    //   }
+    // })
+    // setStorageSync('fontLoaded', true)
+    // }
+
   },
 
   onShow(options) {
