@@ -4,6 +4,7 @@ import {
   loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync,
   setStorageSync, getStorageSync, getCurrentPages, getCurrentInstance, nextTick,
 } from '@tarojs/taro'
+import Loading from '@/components/VLoading/index.js'
 import './app.scss'
 
 const App = createApp({
@@ -67,7 +68,7 @@ const App = createApp({
   },
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
 })
-
+App.directive('loading', Loading)
 App.use(createPinia())
 
 export default App

@@ -21,7 +21,7 @@
         </div>
       </view>
     </view>
-    <view class="long-list">
+    <view class="long-list" v-loading="loading">
       <view @tap="navigateFoodInfo(item)" class="item" v-for="item in longList" :key="item">
         <view class="content" :style="{ background: setColor(item) }">
 
@@ -55,22 +55,30 @@ const initList = new Array(26).fill(0).map((item, index) => {
 })
 initList[0] = Math.random() + '_' + Math.random();
 
-const longList = ref(initList)
+const loading = ref(true)
+const longList = ref([])
+setTimeout(() => {
+  stopPullDownRefresh()
+  loading.value = false
+  longList.value = initList
+}, 800)
 usePullDownRefresh(() => {
-  showLoading()
+  loading.value = true
+  longList.value = []
   setTimeout(() => {
     stopPullDownRefresh()
-    hideLoading()
-  }, 2000)
+    loading.value = false
+    longList.value = initList
+  }, 1200)
 })
 
 useReachBottom(() => {
   const list = new Array(20).fill(0).map((item, index) => {
     return Math.random()
   })
-  showLoading()
+  loading.value = true
   setTimeout(() => {
-    hideLoading()
+    loading.value = false
     longList.value = longList.value.concat(list)
   }, 2000)
 })
