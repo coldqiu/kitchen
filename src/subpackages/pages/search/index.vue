@@ -77,22 +77,27 @@ const foodList = ref([])
 const initFoodList = new Array(20).fill(0).map((item, index) => { return index })
 const scrollTop = ref(0)
 // 请求 搜索列表
-const [ajax, loading] = useRequest()
-
+// const [ajax, loading] = useRequest()
+const loading = ref(false);
 function ajaxFun(params) {
   foodListVisible.value = true
   scrollTop.value = Math.random()
   // 坑 设置相同的scrollTop 无效
   foodList.value = []
   let url = getQueryUrl(params, search_food_api.url)
-  ajax({
-    ...search_food_api,
-    url
-  }).then(res => {
+  // ajax({
+  //   ...search_food_api,
+  //   url
+  // }).then(res => {
+  //   foodList.value = initFoodList
+  // }).catch(err => {
+  //   foodList.value = initFoodList
+  // })
+  loading.value = true
+  setTimeout(() => {
     foodList.value = initFoodList
-  }).catch(err => {
-    foodList.value = initFoodList
-  })
+    loading.value = false
+  }, 300)
 }
 
 // input 相关
