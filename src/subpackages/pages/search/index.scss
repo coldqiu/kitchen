@@ -84,8 +84,8 @@
     }
     .food_list {
       background: #ffffff;
-      min-height: calc(100vh - 60px - 100rpx);
-
+      // min-height: calc(100vh - 60px - 100rpx);
+      // 错误写法，不会生效；正确方式：在标签上写，以内联style的形式
       .tab {
         display: flex;
         justify-content: space-between;

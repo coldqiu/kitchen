@@ -2,7 +2,7 @@
   <view class="page">
     <InfoNavigationBar :title="navigationTitle" />
     <view class="search" :style="{ top: navigationBarAndStatusBarHeight + 'px' }">
-      <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll">
+      <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll" :scroll-top="scrollTop">
         <view class="input_wrap">
           <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
             class="input" placeholder="placeholder" />
@@ -22,7 +22,8 @@
             <view @tap="clickLink(item)" v-for="item in linkList" :key="item" class="item">{{ item }}</view>
           </view>
         </view>
-        <view v-show="foodListVisible" class="food_list" v-loading="loading" top="30px">
+        <view v-show="foodListVisible" class="food_list" v-loading="loading" top="30px"
+          :style="{ minHeight: 'calc(100vh - 60px - 100rpx)' }">
           <view :class="['tab', tabVisible ? 'show' : 'hide']">
             <view @tap="changeTab(item)" v-for="item in tabList" :key="item.type"
               :class="['item', currentTab === item.type ? 'actived' : '']">
@@ -73,41 +74,25 @@ const navigationTitle = ref('food search page')
 const linkListVisible = ref(false)
 const foodListVisible = ref(false)
 const foodList = ref([])
-const initFoodList = new Array(10).fill(0).map((item, index) => { return index })
-
+const initFoodList = new Array(20).fill(0).map((item, index) => { return index })
+const scrollTop = ref(0)
 // 请求 搜索列表
 const [ajax, loading] = useRequest()
-console.log('loading: ', loading);
 
 function ajaxFun(params) {
-  let url = getQueryUrl(params, search_food_api.url)
-  foodList.value = []
   foodListVisible.value = true
-
-  console.log('loading:111 ', loading);
+  scrollTop.value = Math.random()
+  // 坑 设置相同的scrollTop 无效
+  foodList.value = []
+  let url = getQueryUrl(params, search_food_api.url)
   ajax({
     ...search_food_api,
     url
   }).then(res => {
-    console.log("resovle", res)
     foodList.value = initFoodList
   }).catch(err => {
-    console.log('reject', loading);
     foodList.value = initFoodList
   })
-
-
-  // let res = await ajax({
-  //   ...search_food_api,
-  //   url
-  // })
-  // console.log('loading:222 ', loading);
-  // foodListVisible.value = true
-  // console.log("res", res)
-  // if (res === 1) {
-  //   foodList.value = initFoodList
-  //   console.log('foodList.value: ', foodList.value);
-  // }
 }
 
 // input 相关
@@ -177,13 +162,6 @@ const clearVisible = computed(() => {
     return false
   }
 })
-// watch(inputValue, (val) => {
-// })
-
-watchEffect(() => {
-  // console.log('foodListVisible.value', foodListVisible.value)
-  // console.log('linkListVisible.value: ', linkListVisible.value);
-})
 
 // 关联结果列表
 const linkList = ref('ABCDE'.split(""))
@@ -201,15 +179,6 @@ function handerSubmit() {
   linkListVisible.value = false
   // foodListVisible.value = true
   ajaxFun({ name: inputValue.value })
-
-  // let list = getStorageSync('searchHistory')
-  // if (!list) {
-  //   setStorageSync('searchHistory', [])
-  //   list = []
-  // }
-  // list.push(inputValue.value)
-
-  // setStorageSync('searchHistory', list)
 }
 
 // Tab页
@@ -221,6 +190,7 @@ const tabList = [
 const currentTab = ref('normal')
 // 切换tab
 function changeTab(tab) {
+  // 重置scroll 位置
   currentTab.value = tab.type
   ajaxFun({ name: inputValue.value, type: tab.type })
 }
@@ -242,18 +212,18 @@ watch(foodListVisible, (val) => {
   }
 })
 // foodList 滚动 设置 tab 动画 显示、隐藏
-const scrollTop = ref(0)
+const preScrollTop = ref(0)
 const tabVisible = ref(true)
 function handlerScroll(e) {
   let value = e.target.scrollTop
   if (value > 120) {
-    if ((value - scrollTop.value) > 0) {
+    if ((value - preScrollTop.value) > 0) {
       tabVisible.value = false
     } else {
       tabVisible.value = true
     }
   }
-  scrollTop.value = value
+  preScrollTop.value = value
 }
 // url参数 处理各种参数跳转 search 页
 const { params } = useRouter()

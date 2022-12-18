@@ -18,20 +18,20 @@ export default function useRequest() {
             // resolve(res)
             resolve(1)
             loading.value = false
-          }, 1000)
+          }, 600)
         },
         fail: (res) => {
           setTimeout(() => {
             reject(res)
             loading.value = false
 
-          }, 1000)
+          }, 600)
         },
         complete: (res) => {
           setTimeout(() => {
             reject(res)
             loading.value = false
-          }, 1000)
+          }, 600)
           // options.complete(res)
         }
       })
