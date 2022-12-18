@@ -4,8 +4,10 @@
     <view class="search" :style="{ top: navigationBarAndStatusBarHeight + 'px' }">
       <scroll-view @scroll="handlerScroll" :style="scrollViewHeight" :scroll-y="isScroll" :scroll-top="scrollTop">
         <view class="input_wrap">
+          <!-- <form action=""> -->
           <input :value="inputValue" @blur="inputBlur" @change="inputChange" ref="$refInput" @focus="inputFocus"
-            class="input" placeholder="placeholder" />
+            class="input" 	placeholder-class="	placeholder_class" placeholder="孤帆远影碧空尽" confirm-type="search" @confirm="handerSubmit" />
+          <!-- </form> -->
           <!-- :focus="isInputFocus" -->
           <!-- 下面这里不应该使用 v-if, v-if 不渲染内容导致 上面的事件无法被触发 -->
           <view v-show="clearVisible" class="clear">

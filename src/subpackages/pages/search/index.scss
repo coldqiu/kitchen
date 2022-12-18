@@ -27,12 +27,20 @@
         background-color: #e3e5e9;
         transform: scale(1, 0.5);
       }
-      .input {
+      input {
         flex: 1 1;
         margin-left: 15px;
         margin-top: 20px;
         height: 80px;
         font-size: 38px;
+        font-weight: lighter;
+      }
+      .placeholder_class {
+        color: rgb(201, 201, 201);
+        // font-weight: 500;
+        font-weight: lighter;
+        font-size: 38px;
+        margin-left: -2px;
       }
       .clear {
         display: flex;
