@@ -21,13 +21,12 @@
         </div>
       </view>
     </view>
-    <view class="long-list" v-loading="loading">
+    <view title="title" class="long-list" v-loading="loading">
       <view @tap="navigateFoodInfo(item)" class="item" v-for="item in longList" :key="item">
-        <view class="content" :style="{ background: setColor(item) }">
-
-        </view>
-        <div class="text">{{ item }} </div>
+        <view class="content" :style="{ background: setColor(item) }"></view>
+        <view class="text">{{ item }} </view>
       </view>
+      <view class="botton_loading" v-loading="bottomLoading"></view>
     </view>
   </view>
 </template>
@@ -72,15 +71,17 @@ usePullDownRefresh(() => {
   }, 1200)
 })
 
+const bottomLoading = ref(false)
 useReachBottom(() => {
   const list = new Array(20).fill(0).map((item, index) => {
     return Math.random()
   })
-  loading.value = true
+  bottomLoading.value = true
   setTimeout(() => {
-    loading.value = false
+    bottomLoading.value = false
     longList.value = longList.value.concat(list)
-  }, 2000)
+  }, 300)
+
 })
 
 function setColor(num) {

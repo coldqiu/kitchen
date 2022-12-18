@@ -22,13 +22,14 @@
             <view @tap="clickLink(item)" v-for="item in linkList" :key="item" class="item">{{ item }}</view>
           </view>
         </view>
-        <view v-show="foodListVisible" class="food_list">
+        <view v-show="foodListVisible" class="food_list" v-loading="loading" top="30px">
           <view :class="['tab', tabVisible ? 'show' : 'hide']">
             <view @tap="changeTab(item)" v-for="item in tabList" :key="item.type"
               :class="['item', currentTab === item.type ? 'actived' : '']">
               {{ item.title }}
             </view>
           </view>
+          <view class="size_box"></view>
           <FoodList @to-food-info="navigateToFoodInfo" :foodList="foodList" />
           <!-- search page 的交互感觉有点不流畅【待优化】 代码组织形式可以优化【待优化】 -->
         </view>
@@ -48,6 +49,8 @@ if (process.env.TARO_ENV === 'weapp') {
 export default {
   name: 'search-page',
 }
+console.log("process.env", process.env.NODE_ENV)
+// console.log("process.env", process.env.BASE_API)
 </script>
 <script setup>
 import { ref, computed, watchEffect, watch } from 'vue'
@@ -57,7 +60,10 @@ import FoodList from './FoodList/index.vue'
 import {
   getStorageSync, nextTick, useRouter, navigateTo
 } from '@tarojs/taro';
+import useRequest from '@/api/useRequest'
 import { randomText } from '@/utils/data'
+import { getQueryUrl } from '@/utils/index'
+import { search_food_api } from '@/api/index.js'
 
 const statusBarHeight = getStorageSync('statusBarHeight')
 const navigationBarHeight = getStorageSync('navigationBarHeight')
@@ -66,6 +72,43 @@ const navigationBarAndStatusBarHeight = statusBarHeight + navigationBarHeight
 const navigationTitle = ref('food search page')
 const linkListVisible = ref(false)
 const foodListVisible = ref(false)
+const foodList = ref([])
+const initFoodList = new Array(10).fill(0).map((item, index) => { return index })
+
+// 请求 搜索列表
+const [ajax, loading] = useRequest()
+console.log('loading: ', loading);
+
+function ajaxFun(params) {
+  let url = getQueryUrl(params, search_food_api.url)
+  foodList.value = []
+  foodListVisible.value = true
+
+  console.log('loading:111 ', loading);
+  ajax({
+    ...search_food_api,
+    url
+  }).then(res => {
+    console.log("resovle", res)
+    foodList.value = initFoodList
+  }).catch(err => {
+    console.log('reject', loading);
+    foodList.value = initFoodList
+  })
+
+
+  // let res = await ajax({
+  //   ...search_food_api,
+  //   url
+  // })
+  // console.log('loading:222 ', loading);
+  // foodListVisible.value = true
+  // console.log("res", res)
+  // if (res === 1) {
+  //   foodList.value = initFoodList
+  //   console.log('foodList.value: ', foodList.value);
+  // }
+}
 
 // input 相关
 const isInputFocus = ref(false)
@@ -119,8 +162,8 @@ function handlerCancel() {
 // 点击 搜索历史或热门搜索
 function handlerChecked(checked) {
   inputValue.value = checked.name
-  foodListVisible.value = true
   linkListVisible.value = false
+  ajaxFun({ name: checked.name })
 }
 
 // 清除Icon 搜索 取消 三者的显示、隐藏 
@@ -148,14 +191,17 @@ const linkList = ref('ABCDE'.split(""))
 function clickLink(link) {
   console.log('clickLink: ', link);
   inputValue.value = link
-  foodListVisible.value = true
+  // foodListVisible.value = true
+  ajaxFun({ name: inputValue.value })
 }
 
 // 提交搜索 记录到storage 最多保存6个数据
 // 需要LRU算法【待处理】
 function handerSubmit() {
   linkListVisible.value = false
-  foodListVisible.value = true
+  // foodListVisible.value = true
+  ajaxFun({ name: inputValue.value })
+
   // let list = getStorageSync('searchHistory')
   // if (!list) {
   //   setStorageSync('searchHistory', [])
@@ -176,10 +222,9 @@ const currentTab = ref('normal')
 // 切换tab
 function changeTab(tab) {
   currentTab.value = tab.type
+  ajaxFun({ name: inputValue.value, type: tab.type })
 }
 
-const foodList = ref([])
-foodList.value = new Array(10).fill(0).map((item, index) => { return index })
 
 // foodList滚动 需要动态设置dom的高度 【待处理】【实现与参考小程序不同，不用处理】
 // 设置scroll-view height
@@ -215,7 +260,9 @@ const { params } = useRouter()
 // 类别列表跳转
 if (params.name && params.name.length > 0) {
   inputValue.value = params.name
-  foodListVisible.value = true;
+  // foodListVisible.value = true;
+  ajaxFun({ name: inputValue.value })
+
 }
 // 跳转
 function navigateToFoodInfo(id) {

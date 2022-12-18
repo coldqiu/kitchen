@@ -34,11 +34,11 @@ export default {
 <script setup>
 import { randomText } from '@/utils/data'
 
-defineProps({
+const props = defineProps({
   zIndex: String,
-  foodList: Array
+  foodList: Array,
 })
-
+console.log("props", props)
 // 点击 菜名,向外抛出事件
 const emit = defineEmits(['toFoodInfo'])
 function handlerClick(item) {

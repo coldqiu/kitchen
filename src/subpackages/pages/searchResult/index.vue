@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class="size_box"></view>
-    <FoodList @to-food-info="navigateToFoodInfo" :foodList="foodList" />
+    <FoodList @to-food-info="navigateToFoodInfo" :foodList="foodList" v-loading="loading" />
   </view>
 </template>
 
@@ -41,13 +41,20 @@ import { useRouter, navigateTo, showToast } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import FoodList from '../search/FoodList/index.vue'
 
+// loading
+const loading = ref(true)
 // 首页选择食材跳转
 const { params } = useRouter()
 const checkedList = ref(JSON.parse(params.list))
 console.log('checkedList: ', checkedList);
 
 const foodList = ref([])
-foodList.value = new Array(10).fill(0).map((item, index) => { return index })
+const initFoodList = new Array(10).fill(0).map((item, index) => { return index })
+
+setTimeout(() => {
+  loading.value = false
+  foodList.value = initFoodList
+}, 500)
 
 // 跳转
 function navigateToFoodInfo(id) {
@@ -64,6 +71,12 @@ function handlerDelete(item, index) {
     })
   } else {
     checkedList.value.splice(index, 1)
+    loading.value = true
+    foodList.value = []
+    setTimeout(() => {
+      loading.value = false
+      foodList.value = initFoodList
+    }, 500)
   }
 }
 // 跳转
@@ -72,6 +85,7 @@ function navigateToAdd() {
     url: `/subpackages/pages/add/index`
   })
 }
+
 
 </script>
 <style lang='scss' scoped>
