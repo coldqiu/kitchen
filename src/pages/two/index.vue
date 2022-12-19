@@ -1,5 +1,8 @@
 <template>
   <view class="page">
+    <!-- <scroll-view @scroll="pageScroll(e)"> -->
+    <!-- <page-mate> -->
+    <!-- navigation-bar  page-meate 仅支持 微信小程序，非常局限 -->
     <CompNavigationBar :position="'sticky'">
       <view class="flex">
         find
@@ -28,6 +31,9 @@
       </view>
       <view class="botton_loading" v-loading="bottomLoading"></view>
     </view>
+    <CompScrollTop :scrollTop="scrollTop" />
+    <!-- </scroll-view> -->
+    <!-- </page-mate> -->
   </view>
 </template>
 <script>
@@ -45,6 +51,7 @@ import {
   hideLoading, showLoading, navigateTo, useReady, showShareMenu
 } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
+import CompScrollTop from '@/components/ScrollTop/index.vue'
 import { randomText } from '@/utils/data.js'
 
 
@@ -53,7 +60,7 @@ const initList = new Array(26).fill(0).map((item, index) => {
   return Math.random()
 })
 initList[0] = Math.random() + '_' + Math.random();
-
+const scrollTop = ref(0)
 const loading = ref(true)
 const longList = ref([])
 setTimeout(() => {
@@ -107,7 +114,11 @@ function navigateToClass() {
 }
 // 显示当前页面的转发按钮
 showShareMenu()
+function pageScroll(e) {
+  console.log('e: ', e);
+}
 </script>
+
 
 <style scoped lang="scss">
 @import './index.scss'
