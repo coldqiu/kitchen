@@ -12,7 +12,8 @@ export default {
         'pages/foodInfo/index',
         'pages/foodClass/index',
         'pages/searchResult/index',
-        'pages/add/index'
+        'pages/add/index',
+        'pages/basketList/index'
       ]
     }
   ],

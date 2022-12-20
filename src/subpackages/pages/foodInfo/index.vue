@@ -31,12 +31,13 @@
     <view class="materials_wrap">
       <view class="title">
         <view class="text">materials</view>
-        <view class="button">add button</view>
+        <view v-if="!isInBasket" @tap="handlerAdd" class="button">add button</view>
+        <view v-else @tap="handlerRemove" class="button">remove button</view>
       </view>
       <view class="list">
-        <view v-for="item in tmpList" :key="item.name" class="item">
-          <view class="name">{{ item.name }}</view>
-          <view class="num">{{ item.name }}</view>
+        <view v-for="(item, index) in tmpList" :key="item.name" class="item">
+          <view class="name"> {{ params.id + '_' + index }}</view>
+          <view class="num">{{ index }}</view>
         </view>
       </view>
     </view>
@@ -58,6 +59,7 @@
         <view class="content"></view>
       </view>
     </view>
+    <BasketIcon />
   </view>
 </template>
 
@@ -70,13 +72,42 @@ export default {
 }
 </script>
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
+import BasketIcon from '@/components/BasketIcon/index.vue'
 import { tempUpper, randomText } from '@/utils/data.js'
+import { useBasket, createFood } from '@/stores/basket'
 
 const { params } = useRouter()
-// console.log('router: ', router);
+const { basket, addToBasket, removeFromBasket, doneList } = useBasket()
 const tmpList = tempUpper.slice(0, 3)
+console.log('basket: ', basket);
+
+const initIntBasket = false
+
+function initIsIn() {
+  const index = basket.findIndex(item => item.id === params.id)
+  if (index !== -1) {
+    return true
+  } else {
+    return false
+  }
+}
+
+const isInBasket = ref(initIsIn())
+
+function handlerAdd() {
+  let food = new createFood(params.id)
+  addToBasket(food)
+  isInBasket.value = true
+  console.log('basket: ', basket);
+
+}
+function handlerRemove() {
+  removeFromBasket(params.id)
+  isInBasket.value = false
+}
 </script>
 <style scoped lang="scss">
 @import './index.scss'

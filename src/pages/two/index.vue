@@ -34,6 +34,7 @@
     <CompScrollTop :scrollTop="scrollTop" />
     <!-- </scroll-view> -->
     <!-- </page-mate> -->
+    <BasketIcon />
   </view>
 </template>
 <script>
@@ -52,6 +53,7 @@ import {
 } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import CompScrollTop from '@/components/ScrollTop/index.vue'
+import BasketIcon from '@/components/BasketIcon/index.vue'
 import { randomText } from '@/utils/data.js'
 
 
