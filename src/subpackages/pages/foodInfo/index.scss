@@ -107,7 +107,7 @@
     }
   }
   .step_wrap {
-    // margin-top
+    padding-bottom: 100px;
     .list {
       .item {
         padding: 0 35px;
@@ -133,6 +133,34 @@
       .title {
         margin: 35px 0;
         font-size: 45px;
+      }
+    }
+  }
+  .bottom_fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    background: #ffffff;
+    border-top: 1px solid rgb(214, 205, 205);
+    padding-bottom: env(safe-area-inset-bottom);
+    .flex {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      .item {
+        flex: 1;
+        height: 100px;
+        line-height: 100px;
+        .iconfont {
+          font-size: 50px;
+        }
+        .text {
+          vertical-align: top;
+          margin-left: 10px;
+          font-size: 24px;
+        }
       }
     }
   }

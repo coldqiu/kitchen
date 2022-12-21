@@ -1,3 +1,99 @@
 .page {
-  
+  .food_list {
+    margin: 0 35px;
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      .text {
+        font-size: 42px;
+      }
+      .iconfont {
+        font-size: 42px;
+      }
+    }
+    .button {
+      .del {
+        font-size: 26px;
+        color: #ff7c7c;
+        padding: 0 8px;
+        border-radius: 6px;
+        border: 1px solid #d86a6a;
+      }
+    }
+    .ul {
+      margin: 18px 0;
+      .li {
+        line-height: 100px;
+        height: 100px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        font-size: 26px;
+        .checkbox {
+          vertical-align: top;
+          display: inline-block;
+          margin: 0 40px;
+          .checked {
+            color: #d86a6a;
+          }
+          .check {
+            color: rgb(130, 119, 119);
+          }
+        }
+        .name {
+          vertical-align: top;
+          display: inline-block;
+          margin-left: 10px;
+          width: 320px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .num {
+          vertical-align: top;
+          display: inline-block;
+        }
+      }
+      .complete {
+        margin: 15px 0;
+      }
+      button {
+        margin: 12px 0;
+        text-align: left;
+        height: 50px;
+        line-height: 50px;
+        background: #ffffff;
+        .iconfont {
+          display: inline-block;
+          vertical-align: top;
+          font-size: 28px;
+          color: #ff7c7c;
+        }
+        .text {
+          display: inline-block;
+          vertical-align: top;
+          margin-left: 10px;
+          color: #ff7c7c;
+          font-size: 26px;
+        }
+      }
+      .actived {
+        background: #f5f5f5;
+        border-radius: 3px;
+      }
+      button::after {
+        border: none;
+      }
+    }
+  }
+}
+
+@keyframes animation1 {
+  100% {
+    background: #d86a6a;
+  }
+  0% {
+    background: #ffffff;
+  }
 }

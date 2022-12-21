@@ -1,12 +1,39 @@
 .basket_icon {
   position: fixed;
-  bottom: 200px;
-  left: 15px;
+  bottom: 150px;
+  left: -90px;
+  animation: animation-icon-show 0.6s ease;
   .icon {
     font-size: 60px;
-    background: #d86a6a;
+    background: #ff5252;
     color: #ffffff;
     padding: 15px;
     border-radius: 50%;
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.18);
+  }
+}
+.hide {
+  left: -90px;
+  animation: animation-icon-hide 0.6s;
+}
+.show {
+  left: 15px;
+  animation: animation-icon-show 0.6s;
+}
+@keyframes animation-icon-show {
+  0% {
+    left: -90px;
+  }
+  100% {
+    left: 15px;
+  }
+}
+@keyframes animation-icon-hide {
+  0% {
+    left: 15px;
+  }
+  100% {
+    left: -90px;
+    // display: none;
   }
 }

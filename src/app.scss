@@ -34,3 +34,7 @@
 .loading-parent--relative {
   position: relative;
 }
+
+:root {
+  --safeBottom: env(safe-area-inset-bottom);
+}

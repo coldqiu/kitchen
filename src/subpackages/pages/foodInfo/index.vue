@@ -59,7 +59,23 @@
         <view class="content"></view>
       </view>
     </view>
-    <BasketIcon />
+    <view class="bottom_fixed">
+      <view class="flex">
+        <view class="item">
+          <text class="iconfont icon-aixin"></text>
+          <text class="text">collect</text>
+        </view>
+        <view class="item">
+          <text class="iconfont icon-zhaoxiangji"></text>
+          <text class="text">upload</text>
+        </view>
+        <view class="item">
+          <text class="iconfont icon-shangchuan-"></text>
+          <text class="text">share</text>
+        </view>
+      </view>
+    </view>
+    <BasketIcon :paddingBottom="100" />
   </view>
 </template>
 
@@ -72,7 +88,7 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
@@ -82,9 +98,6 @@ import { useBasket, createFood } from '@/stores/basket'
 const { params } = useRouter()
 const { basket, addToBasket, removeFromBasket, doneList } = useBasket()
 const tmpList = tempUpper.slice(0, 3)
-console.log('basket: ', basket);
-
-const initIntBasket = false
 
 function initIsIn() {
   const index = basket.findIndex(item => item.id === params.id)

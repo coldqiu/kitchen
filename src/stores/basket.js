@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 export const useBasket = defineStore('basket', () => {
   //
+  // const basket = ref([food])
   const basket = ref([])
   function addToBasket(food) {
     basket.value.push(food)
@@ -29,11 +30,22 @@ const food = {
   id: 'id',
   list: [
     {
-      name: 'Food materials',
+      name: 'Food materials1',
+      num: '100克',
+      done: false
+    },
+    {
+      name: 'Food materials2',
       num: '200克',
       done: false
+    },
+    {
+      name: 'Food materials3',
+      num: '300克',
+      done: false
     }
-  ]
+  ],
+  fold: false
 }
 
 export function createFood(id) {

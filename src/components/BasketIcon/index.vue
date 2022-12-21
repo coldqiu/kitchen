@@ -1,6 +1,6 @@
 <template>
-  <view class="basket_icon">
-    <view @tap="navigateToBasketPage" class="icon iconfont icon-.icon-31shezhi"></view>
+  <view :class="['basket_icon', basket.length > 0 ? 'show' : 'hide']" :style="{ bottom: `${150 + paddingBottom}rpx` }">
+    <view @tap="navigateToBasketPage" class="icon iconfont .icon-31shezhi"></view>
   </view>
 </template>
   
@@ -14,6 +14,16 @@ export default {
 </script>
 <script setup>
 import { navigateTo } from '@tarojs/taro'
+import { useBasket } from '@/stores/basket.js'
+
+const props = defineProps({
+  paddingBottom: {
+    type: Number,
+    default: 0
+  }
+})
+const { basket } = useBasket()
+
 function navigateToBasketPage() {
   navigateTo({
     url: '/subpackages/pages/basketList/index'
