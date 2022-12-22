@@ -88,8 +88,8 @@ export default {
 }
 </script>
 <script setup>
-import { ref, watch } from 'vue'
-import { useRouter, createSelectorQuery, usePageScroll } from '@tarojs/taro'
+import { ref, watch, computed } from 'vue'
+import { useRouter, createSelectorQuery, usePageScroll, nextTick } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
 import { tempUpper, randomText } from '@/utils/data.js'
@@ -98,15 +98,6 @@ import { useBasket, createFood } from '@/stores/basket'
 const { params } = useRouter()
 const { basket, addToBasket, removeFromBasket, doneList } = useBasket()
 const tmpList = tempUpper.slice(0, 3)
-
-function initIsIn() {
-  const index = basket.findIndex(item => item.id === params.id)
-  if (index !== -1) {
-    return true
-  } else {
-    return false
-  }
-}
 
 // 获取节点位置信息
 let startPos = {}
@@ -118,27 +109,34 @@ usePageScroll(() => {
   query.exec()
 })
 
-const isInBasket = ref(initIsIn())
+const isInBasket = computed(() => {
+  const index = basket.findIndex(item => item.id === params.id)
+  if (index !== -1) {
+    return true
+  } else {
+    return false
+  }
+})
+
 const $refBasketIcon = ref(null)
 
 // 加入、移除
 function handlerToggle() {
+  // console.log('isInBasket.value: ', isInBasket.value);
   if (isInBasket.value) {
     handlerRemove()
   } else {
     handlerAdd()
   }
-  // handlerAdd(e)
 }
 function handlerAdd() {
   let food = new createFood(params.id)
   addToBasket(food)
-  isInBasket.value = true
-  $refBasketIcon.value.drop(startPos)
+  // debugger;
+  // $refBasketIcon.value.drop(startPos)
 }
 function handlerRemove() {
   removeFromBasket(params.id)
-  isInBasket.value = false
 }
 
 
