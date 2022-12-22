@@ -31,8 +31,8 @@
     <view class="materials_wrap">
       <view class="title">
         <view class="text">materials</view>
-        <view v-if="!isInBasket" @tap="handlerAdd" class="button">add button</view>
-        <view v-else @tap="handlerRemove" class="button">remove button</view>
+        <view id="id-dom" @tap="handlerToggle" class="button">{{ isInBasket ? 'remove button' : 'add button' }}</view>
+        <!-- <view id="id-dom" @tap="handlerToggle" class="button">{{ 'add button' }}</view> -->
       </view>
       <view class="list">
         <view v-for="(item, index) in tmpList" :key="item.name" class="item">
@@ -75,7 +75,7 @@
         </view>
       </view>
     </view>
-    <BasketIcon :paddingBottom="100" />
+    <BasketIcon :paddingBottom="100" ref="$refBasketIcon" />
   </view>
 </template>
 
@@ -89,7 +89,7 @@ export default {
 </script>
 <script setup>
 import { ref, watch } from 'vue'
-import { useRouter } from '@tarojs/taro'
+import { useRouter, createSelectorQuery, usePageScroll } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
 import { tempUpper, randomText } from '@/utils/data.js'
@@ -108,19 +108,40 @@ function initIsIn() {
   }
 }
 
-const isInBasket = ref(initIsIn())
+// 获取节点位置信息
+let startPos = {}
+usePageScroll(() => {
+  const query = createSelectorQuery()
+  query.select('#id-dom').boundingClientRect(function (res) {
+    startPos = { x: res.left, y: res.top }
+  })
+  query.exec()
+})
 
+const isInBasket = ref(initIsIn())
+const $refBasketIcon = ref(null)
+
+// 加入、移除
+function handlerToggle() {
+  if (isInBasket.value) {
+    handlerRemove()
+  } else {
+    handlerAdd()
+  }
+  // handlerAdd(e)
+}
 function handlerAdd() {
   let food = new createFood(params.id)
   addToBasket(food)
   isInBasket.value = true
-  console.log('basket: ', basket);
-
+  $refBasketIcon.value.drop(startPos)
 }
 function handlerRemove() {
   removeFromBasket(params.id)
   isInBasket.value = false
 }
+
+
 </script>
 <style scoped lang="scss">
 @import './index.scss'

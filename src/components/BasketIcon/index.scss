@@ -10,6 +10,24 @@
     padding: 15px;
     border-radius: 50%;
     box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.18);
+    z-index: 20;
+  }
+  .ball-container {
+    .ball {
+      position: absolute;
+      top: 10px;
+      left: 50px;
+      transition: all 0.8s cubic-bezier(0.68, -0.7, 0.74, 0.27);
+      // transition: all 1s ease;
+      .inner {
+        z-index: -1;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background: #ff5252;
+        transition: all 0.8s linear;
+      }
+    }
   }
 }
 .hide {
