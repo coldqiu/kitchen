@@ -1,5 +1,5 @@
 <template>
-  <view id="id-ball" :class="['basket_icon', basket.length > 0 ? 'show' : 'hide']"
+  <view id="id-ball" :class="['basket_icon', basket.length > 0 ? 'basket_icon_show' : 'basket_icon_hide']"
     :style="{ bottom: `${150 + paddingBottom}rpx` }">
     <view @tap="navigateToBasketPage" class="icon iconfont .icon-31shezhi"></view>
     <view class="ball-container">
