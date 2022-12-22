@@ -1,16 +1,20 @@
 .page {
   .food_list {
-    margin: 0 35px;
+    margin: 20px 35px 25px 35px;
     .title {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 0;
       .text {
-        font-size: 42px;
+        flex: 1;
+        font-size: 36px;
+        word-break: break-all;
       }
       .iconfont {
+        flex: 0 0 60px;
         font-size: 42px;
+        text-align: right;
       }
     }
     .button {
@@ -25,8 +29,10 @@
     .ul {
       margin: 18px 0;
       .li {
-        line-height: 100px;
-        height: 100px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        min-height: 100px;
         background: #f5f5f5;
         border-radius: 8px;
         font-size: 26px;
@@ -85,6 +91,14 @@
       button::after {
         border: none;
       }
+    }
+    .border {
+      width: 100%;
+      height: 30px;
+      background: #f5f5f5;
+      margin: 55px -35px 5px -35px;
+      padding: 0 35px;
+      box-sizing: content-box;
     }
   }
 }

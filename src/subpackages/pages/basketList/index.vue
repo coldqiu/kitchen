@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <InfoNavigationBar title="food basket" />
-    <view class="food_list" v-for="itemA in basket" :key="itemA.id">
+    <view class="food_list" v-for="(itemA, index) in basket" :key="itemA.id">
       <view @tap="navigateToFoodInfo(itemA.id)" class="title">
         <view class="text"> {{ itemA.id }} </view>
         <view class="icon iconfont .icon-jiantouyou"></view>
@@ -34,7 +34,7 @@
           </view>
         </view>
       </view>
-
+      <view class="border" v-show="index !== basket.length - 1"></view>
     </view>
   </view>
 </template>
