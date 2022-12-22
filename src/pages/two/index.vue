@@ -49,7 +49,8 @@ export default {
 import { ref } from 'vue'
 import {
   usePullDownRefresh, useReachBottom, stopPullDownRefresh,
-  hideLoading, showLoading, navigateTo, useReady, showShareMenu
+  hideLoading, showLoading, navigateTo, useReady, showShareMenu,
+  useDidHide, useDidShow, startPullDownRefresh
 } from '@tarojs/taro'
 import CompNavigationBar from '@/components/CompNavigationBar/index.vue';
 import CompScrollTop from '@/components/ScrollTop/index.vue'
@@ -119,6 +120,23 @@ showShareMenu()
 function pageScroll(e) {
   console.log('e: ', e);
 }
+// 页面隐藏(超过3分钟)再次显示刷新数据
+let hideTime = Date.now()
+useDidHide(() => {
+  hideTime = Date.now()
+})
+useDidShow(() => {
+  if (Date.now() - hideTime > 1000 * 60 * 3) {
+    startPullDownRefresh()
+    loading.value = true
+    longList.value = []
+    setTimeout(() => {
+      stopPullDownRefresh()
+      loading.value = false
+      longList.value = initList
+    }, 1200)
+  }
+})
 </script>
 
 
