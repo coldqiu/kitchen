@@ -126,7 +126,7 @@ useDidHide(() => {
   hideTime = Date.now()
 })
 useDidShow(() => {
-  if (Date.now() - hideTime > 1000 * 60 * 3) {
+  if (Date.now() - hideTime > 1000 * 60 * 5) {
     startPullDownRefresh()
     loading.value = true
     longList.value = []

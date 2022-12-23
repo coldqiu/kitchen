@@ -52,7 +52,6 @@ if (process.env.TARO_ENV === 'weapp') {
 export default {
   name: 'search-page',
 }
-console.log("process.env", process.env.NODE_ENV)
 // console.log("process.env", process.env.BASE_API)
 </script>
 <script setup>

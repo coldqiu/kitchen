@@ -18,8 +18,6 @@ export default {
 const props = defineProps({
   scrollTop: Number
 })
-console.log(props)
-console.log('props: ', props);
 </script>
 <style scoped lang="scss">
 @import './index.scss'
