@@ -14,7 +14,7 @@ export const useColection = defineStore('collectList', () => {
     }
     if (collectionId !== '0') {
       let current = getCurrentCollection(collectionId)
-      current?.list.push(food)
+      current?.list.unshift(food)
     }
   }
   function delFromColection(food, collectionId = '0') {

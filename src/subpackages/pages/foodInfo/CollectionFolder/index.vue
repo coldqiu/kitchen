@@ -68,6 +68,8 @@ function toggleFolder() {
   visibleFolder.value = !visibleFolder.value
   if (visibleFolder.value === true) {
     setPageStyle({ style: { overflow: 'hidden' } })
+  } else {
+    setPageStyle({ style: { overflow: 'auto' } })
   }
 }
 // 选择菜单
