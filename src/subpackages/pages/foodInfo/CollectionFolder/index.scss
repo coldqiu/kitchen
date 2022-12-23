@@ -69,6 +69,7 @@
       .list {
         margin: 0 35px;
         overflow: scroll;
+        -webkit-overflow-scrolling: touch;
         height: calc(55vh - 110px);
         box-sizing: border-box;
         padding-bottom: env(safe-area-inset-bottom);
