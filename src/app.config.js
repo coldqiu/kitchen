@@ -13,7 +13,8 @@ export default {
         'pages/foodClass/index',
         'pages/searchResult/index',
         'pages/add/index',
-        'pages/basketList/index'
+        'pages/basketList/index',
+        'pages/foodList/index'
       ]
     }
   ],

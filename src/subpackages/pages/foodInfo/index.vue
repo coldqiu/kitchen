@@ -61,9 +61,9 @@
     </view>
     <view class="bottom_fixed">
       <view class="flex">
-        <view class="item">
+        <view @tap="CollectToggle" class="item">
           <text class="iconfont icon-aixin"></text>
-          <text class="text">collect</text>
+          <text class="text"> {{ hasCollected ? '已收藏' : '收藏' }}</text>
         </view>
         <view class="item">
           <text class="iconfont icon-zhaoxiangji"></text>
@@ -94,11 +94,15 @@ import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
 import { tempUpper, randomText } from '@/utils/data.js'
 import { useBasket, createFood } from '@/stores/basket'
+import { useColection } from '@/stores/collect'
 
 const { params } = useRouter()
 const { basket, addToBasket, removeFromBasket, doneList } = useBasket()
-const tmpList = tempUpper.slice(0, 3)
+const { colectionList, all: defaultCollect, addToColection, delFromColection } = useColection()
 
+const tmpList = tempUpper.slice(0, 3)
+// food信息
+let foodInfo = new createFood(params.id)
 // 获取节点位置信息
 let startPos = {}
 usePageScroll(() => {
@@ -130,15 +134,30 @@ function handlerToggle() {
   }
 }
 function handlerAdd() {
-  let food = new createFood(params.id)
-  addToBasket(food)
+  addToBasket(foodInfo)
   // debugger;
   // $refBasketIcon.value.drop(startPos)
 }
 function handlerRemove() {
   removeFromBasket(params.id)
 }
-
+// 收藏
+const hasCollected = computed(() => {
+  const index = defaultCollect.list.findIndex(item => item.id === params.id)
+  if (index !== -1) {
+    return true
+  } else {
+    return false
+  }
+})
+// 切换 收藏
+function CollectToggle() {
+  if (hasCollected.value) {
+    delFromColection(foodInfo)
+  } else {
+    addToColection(foodInfo)
+  }
+}
 
 </script>
 <style scoped lang="scss">
