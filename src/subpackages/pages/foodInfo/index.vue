@@ -62,7 +62,7 @@
     <view class="bottom_fixed">
       <view class="flex">
         <view @tap="CollectToggle" class="item">
-          <text class="iconfont icon-aixin"></text>
+          <text :class="['iconfont icon-aixin', hasCollected ? 'actived' : '']"></text>
           <text class="text"> {{ hasCollected ? '已收藏' : '收藏' }}</text>
         </view>
         <view class="item">
@@ -160,8 +160,9 @@ function CollectToggle() {
     delFromColection(foodInfo)
   } else {
     addToColection(foodInfo)
-    $refCollectionFolder.value.show()
+    $refCollectionFolder.value.showToggle()
   }
+  // $refCollectionFolder.value.showToggle()
 }
 
 </script>

@@ -154,11 +154,15 @@
         line-height: 100px;
         .iconfont {
           font-size: 50px;
+          color: rgb(125, 125, 125);
         }
         .text {
           vertical-align: top;
           margin-left: 10px;
           font-size: 24px;
+        }
+        .actived {
+          color: rgb(226, 46, 46);
         }
       }
     }

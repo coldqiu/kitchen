@@ -54,8 +54,8 @@ const { colectionList, addToColection } = useColection()
 
 let _timer = null
 const visibleButton = ref(false)
-function show() {
-  visibleButton.value = true
+function showToggle() {
+  visibleButton.value = !visibleButton.value
   _timer = setTimeout(() => {
     visibleButton.value = false
     clearTimeout(_timer)
@@ -82,7 +82,7 @@ function createNewMenu() {
   showToast({ title: 'wait moment', icon: 'none' })
 }
 defineExpose({
-  show
+  showToggle
 })
 </script>
 <style scoped lang="scss">
