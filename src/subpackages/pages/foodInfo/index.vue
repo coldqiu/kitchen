@@ -160,7 +160,7 @@ const hasCollected = computed(() => {
 // 切换 收藏
 const $refCollectionFolder = ref(null)
 function CollectToggle() {
-  // 应该有一个防抖逻辑，以及点击效果，参考抖音
+  // 应该有一个防抖逻辑，以及点击效果，参考抖音 【待处理】
   if (hasCollected.value) {
     delFromColection(foodInfo)
   } else {
