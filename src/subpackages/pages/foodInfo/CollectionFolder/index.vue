@@ -73,8 +73,6 @@ function toggleFolder() {
 // 选择菜单
 function selectCollection(collectionInfo) {
   addToColection(props.foodInfo, collectionInfo.id)
-  console.log('collectionInfo.id: ', collectionInfo.id);
-  console.log('selectCollection colectionList: ', colectionList);
   toggleFolder()
 }
 // 创建新菜单

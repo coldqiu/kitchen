@@ -23,7 +23,6 @@ import { useColection } from '@/stores/collect'
 const { all, getCurrentCollection } = useColection()
 const { params } = useRouter()
 const colletion = getCurrentCollection(params?.collectionId)
-console.log('colletion: ', colletion);
 
 // 跳转
 function navigateToFoodInfo(food) {

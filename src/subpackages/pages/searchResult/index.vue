@@ -46,7 +46,6 @@ const loading = ref(true)
 // 首页选择食材跳转
 const { params } = useRouter()
 const checkedList = ref(JSON.parse(params.list))
-console.log('checkedList: ', checkedList);
 
 const foodList = ref([])
 const initFoodList = new Array(10).fill(0).map((item, index) => { return index })
