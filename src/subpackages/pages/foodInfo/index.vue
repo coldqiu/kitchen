@@ -21,7 +21,7 @@
               I am Iron Man.
             </view>
           </view>
-          <view class="follow">follow</view>
+          <view @tap="handlerClick" class="follow">follow</view>
         </view>
         <view class="desc">
           描述一词的说明：描述某人/某事物的文字或演讲；用文字写出或说出某人/某物的样子的行为
@@ -65,11 +65,11 @@
           <text :class="['iconfont icon-aixin', hasCollected ? 'actived' : '']"></text>
           <text class="text"> {{ hasCollected ? '已收藏' : '收藏' }}</text>
         </view>
-        <view class="item">
+        <view @tap="handlerClick" class="item">
           <text class="iconfont icon-zhaoxiangji"></text>
           <text class="text">upload</text>
         </view>
-        <view class="item">
+        <view @tap="handlerClick" class="item">
           <text class="iconfont icon-shangchuan-"></text>
           <text class="text">share</text>
         </view>
@@ -90,7 +90,7 @@ export default {
 </script>
 <script setup>
 import { ref, watch, computed } from 'vue'
-import { useRouter, createSelectorQuery, usePageScroll, nextTick } from '@tarojs/taro'
+import { useRouter, createSelectorQuery, usePageScroll, nextTick, showToast } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
 import CollectionFolder from './CollectionFolder/index.vue'
@@ -130,6 +130,10 @@ const $refBasketIcon = ref(null)
 // 加入、移除
 function handlerToggle() {
   // console.log('isInBasket.value: ', isInBasket.value);
+  showToast({
+    icon: 'none',
+    title: 'wait moment'
+  })
   if (isInBasket.value) {
     handlerRemove()
   } else {
@@ -156,6 +160,7 @@ const hasCollected = computed(() => {
 // 切换 收藏
 const $refCollectionFolder = ref(null)
 function CollectToggle() {
+  // 应该有一个防抖逻辑，以及点击效果，参考抖音
   if (hasCollected.value) {
     delFromColection(foodInfo)
   } else {
@@ -164,7 +169,13 @@ function CollectToggle() {
   }
   // $refCollectionFolder.value.showToggle()
 }
-
+// 【待实现】
+function handlerClick() {
+  showToast({
+    icon: 'none',
+    title: 'wait moment'
+  })
+}
 </script>
 <style scoped lang="scss">
 @import './index.scss'
