@@ -75,10 +75,11 @@
         </view>
       </view>
     </view>
-    <BasketIcon :paddingBottom="100" ref="$refBasketIcon" />
+    <!-- <BasketIcon :paddingBottom="100" ref="$refBasketIcon" /> -->
+    <CollectionFolder :food-info="foodInfo" ref="$refCollectionFolder" />
   </view>
 </template>
-
+<!-- 页面有些臃肿 【待处理】 -->
 <script>
 if (process.env.TARO_ENV === 'weapp') {
   require('./index.scss')
@@ -92,6 +93,8 @@ import { ref, watch, computed } from 'vue'
 import { useRouter, createSelectorQuery, usePageScroll, nextTick } from '@tarojs/taro'
 import InfoNavigationBar from '@/components/InfoNavigationBar/index.vue'
 import BasketIcon from '@/components/BasketIcon/index.vue'
+import CollectionFolder from './CollectionFolder/index.vue'
+
 import { tempUpper, randomText } from '@/utils/data.js'
 import { useBasket, createFood } from '@/stores/basket'
 import { useColection } from '@/stores/collect'
@@ -151,11 +154,13 @@ const hasCollected = computed(() => {
   }
 })
 // 切换 收藏
+const $refCollectionFolder = ref(null)
 function CollectToggle() {
   if (hasCollected.value) {
     delFromColection(foodInfo)
   } else {
     addToColection(foodInfo)
+    $refCollectionFolder.value.show()
   }
 }
 

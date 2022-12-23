@@ -1,0 +1,110 @@
+.collection_folder {
+  .info_button {
+    position: fixed;
+    left: 35px;
+    right: 35px;
+    bottom: 180px;
+    .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // width: 100%;
+      padding: 20px 25px;
+      box-sizing: border-box;
+      border-radius: 35px;
+      background: rgb(229, 221, 237);
+      animation: animation_show 0.05s linear;
+      text {
+        font-size: 30px;
+      }
+      .message {
+        .icon {
+          font-size: 46px;
+          vertical-align: middle;
+          margin-right: 10px;
+        }
+      }
+      .link {
+        text {
+          color: rgb(144, 52, 236);
+        }
+        .icon {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+  .folder {
+    .folder_mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 200;
+    }
+    .content {
+      position: fixed;
+      top: 45%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-radius: 25px 25px 0 0;
+      z-index: 300;
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // margin: 20px 35px;
+        height: 110px;
+        margin: 0 35px;
+        .button {
+          padding: 12px 20px;
+          background: #eee;
+          border-radius: 12px;
+        }
+      }
+      .list {
+        margin: 0 35px;
+        overflow: scroll;
+        height: calc(55vh - 110px);
+        box-sizing: border-box;
+        padding-bottom: env(safe-area-inset-bottom);
+        .item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 25px;
+          .info {
+            display: flex;
+            align-items: center;
+            .img {
+              width: 120px;
+              height: 100px;
+              background: #eee;
+              border-radius: 20px;
+            }
+            .text {
+              margin-left: 20px;
+            }
+          }
+          .icon {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animation_show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    opacity: 1;
+  }
+}

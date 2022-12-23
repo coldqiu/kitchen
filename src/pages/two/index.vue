@@ -34,7 +34,7 @@
     <CompScrollTop :scrollTop="scrollTop" />
     <!-- </scroll-view> -->
     <!-- </page-mate> -->
-    <BasketIcon />
+    <!-- <BasketIcon /> -->
   </view>
 </template>
 <script>

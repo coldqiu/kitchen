@@ -1,7 +1,7 @@
 <template>
   <view class="page">
     <InfoNavigationBar :title="colletion.title" />
-    <FoodList @to-food-info="navigateToFoodInfo" :foodList="all.list" />
+    <FoodList @to-food-info="navigateToFoodInfo" :foodList="colletion.list" />
   </view>
 </template>
 
@@ -23,6 +23,7 @@ import { useColection } from '@/stores/collect'
 const { all, getCurrentCollection } = useColection()
 const { params } = useRouter()
 const colletion = getCurrentCollection(params?.collectionId)
+console.log('colletion: ', colletion);
 
 // 跳转
 function navigateToFoodInfo(food) {
