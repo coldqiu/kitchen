@@ -1,3 +1,3 @@
 
-* learn pactice weapp vue3 taro;
+* pactice weapp vue3 taro;
 
