@@ -14,7 +14,9 @@ export const useColection = defineStore('collectList', () => {
     }
     if (collectionId !== '0') {
       let current = getCurrentCollection(collectionId)
-      current?.list.unshift(food)
+      if (current.list.findIndex(item => item.id === food.id) === -1) {
+        current.list.unshift(food)
+      }
     }
   }
   function delFromColection(food, collectionId = '0') {
@@ -23,8 +25,10 @@ export const useColection = defineStore('collectList', () => {
 
     if (collectionId !== '0') {
       let current = getCurrentCollection(collectionId)
-      let index = current?.list.findIndex(item => item.id === food.id)
-      current.list.splice(index, 1)
+      if (current?.list.findIndex(item => item.id === food.id) !== -1) {
+        let index = current?.list.findIndex(item => item.id === food.id)
+        current.list.splice(index, 1)
+      }
     }
   }
 
