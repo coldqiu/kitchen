@@ -1,4 +1,7 @@
-# kitchen
-* learn pactice vue3/taro;
-* about cooking and dessert methods;
-* Follow up with react hook;
+
+* pactice weapp vue3 taro;
+
+小程序预览地址
+
+![预览地址](https://cdn.coldqiu.com/image-jepg/weapp_430.jpg)
+
