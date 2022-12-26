@@ -130,10 +130,10 @@ const $refBasketIcon = ref(null)
 // 加入、移除
 function handlerToggle() {
   // console.log('isInBasket.value: ', isInBasket.value);
-  showToast({
-    icon: 'none',
-    title: 'wait moment'
-  })
+  // showToast({
+  //   icon: 'none',
+  //   title: 'wait moment'
+  // })
   if (isInBasket.value) {
     handlerRemove()
   } else {
