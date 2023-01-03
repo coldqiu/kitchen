@@ -22,7 +22,6 @@ export const useColection = defineStore('collectList', () => {
   function delFromColection(food, collectionId = '0') {
     const indexAll = all.list.findIndex(item => item.id === food.id)
     all.list.splice(indexAll, 1)
-
     if (collectionId !== '0') {
       let current = getCurrentCollection(collectionId)
       if (current?.list.findIndex(item => item.id === food.id) !== -1) {

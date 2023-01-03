@@ -106,6 +106,15 @@ const { colectionList, all: defaultCollect, addToColection, delFromColection } =
 const tmpList = tempUpper.slice(0, 3)
 // food信息
 let foodInfo = new createFood(params.id)
+// currentCollection id
+let collectionId = undefined
+colectionList.forEach(collection => {
+  collection.list.forEach(food => {
+    if (food.id === params.id) {
+      collectionId = collection.id
+    }
+  })
+})
 // 获取节点位置信息
 let startPos = {}
 usePageScroll(() => {
@@ -162,7 +171,7 @@ const $refCollectionFolder = ref(null)
 function CollectToggle() {
   // 应该有一个防抖逻辑，以及点击效果，参考抖音 【待处理】
   if (hasCollected.value) {
-    delFromColection(foodInfo)
+    delFromColection(foodInfo, collectionId)
   } else {
     addToColection(foodInfo)
     $refCollectionFolder.value.showToggle()
