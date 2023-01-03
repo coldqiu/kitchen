@@ -61,7 +61,7 @@
     </view>
     <view class="bottom_fixed">
       <view class="flex">
-        <view @tap="CollectToggle" class="item">
+        <view @tap="collectToggle" class="item">
           <text :class="['iconfont icon-aixin', hasCollected ? 'actived' : '']"></text>
           <text class="text"> {{ hasCollected ? '已收藏' : '收藏' }}</text>
         </view>
@@ -168,7 +168,7 @@ const hasCollected = computed(() => {
 })
 // 切换 收藏
 const $refCollectionFolder = ref(null)
-function CollectToggle() {
+function collectToggle() {
   // 应该有一个防抖逻辑，以及点击效果，参考抖音 【待处理】
   if (hasCollected.value) {
     delFromColection(foodInfo, collectionId)
