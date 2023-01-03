@@ -2,7 +2,8 @@
 // https://eslint.vuejs.org/user-guide/#editor-integrations
 {
   "extends": [
-    "taro/vue3"
+    "taro/vue3",
+    "prettier"
   ],
   "rules": {
     "vue/multi-word-component-names": [
@@ -12,6 +13,10 @@
           "Counter"
         ]
       }
+    ],
+    "semi": [
+      "error",
+      "never"
     ]
   }
 }

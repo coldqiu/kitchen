@@ -1,11 +1,17 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue"
+import { createPinia } from "pinia"
 import {
-  loadFontFace, getMenuButtonBoundingClientRect, getSystemInfoSync,
-  setStorageSync, getStorageSync, getCurrentPages, getCurrentInstance, nextTick,
-} from '@tarojs/taro'
-import Loading from '@/components/VLoading/index.js'
-import './app.scss'
+  loadFontFace,
+  getMenuButtonBoundingClientRect,
+  getSystemInfoSync,
+  setStorageSync,
+  getStorageSync,
+  getCurrentPages,
+  getCurrentInstance,
+  nextTick,
+} from "@tarojs/taro"
+import Loading from "@/components/VLoading/index.js"
+import "./app.scss"
 
 const App = createApp({
   onLaunch() {
@@ -13,15 +19,15 @@ const App = createApp({
     const { top, height } = getMenuButtonBoundingClientRect()
     const { statusBarHeight, platform } = getSystemInfoSync()
 
-    setStorageSync('statusBarHeight', statusBarHeight)
-    setStorageSync('menuButtonHeight', height ? height : 32)
+    setStorageSync("statusBarHeight", statusBarHeight)
+    setStorageSync("menuButtonHeight", height ? height : 32)
 
     // top height 极少数情况下获取不到值或取到0
     if (top && top !== 0 && height && height !== 0) {
       const navigationBarHeight = (top - statusBarHeight) * 2 + height
-      setStorageSync('navigationBarHeight', navigationBarHeight)
+      setStorageSync("navigationBarHeight", navigationBarHeight)
     } else {
-      setStorageSync('navigationBarHeight', platform === 'android' ? 48 : 40)
+      setStorageSync("navigationBarHeight", platform === "android" ? 48 : 40)
     }
 
     // env.USER_DATA_PATH
@@ -44,7 +50,6 @@ const App = createApp({
     // })
     // setStorageSync('fontLoaded', true)
     // }
-
   },
 
   onShow(options) {
@@ -63,12 +68,11 @@ const App = createApp({
       //     setStorageSync('currentTabIndex', 0)
       //   }
       // })
-
     })
   },
   // 入口组件不需要实现 render 方法，即使实现了也会被 taro 所覆盖
 })
-App.directive('loading', Loading)
+App.directive("loading", Loading)
 App.use(createPinia())
 
 export default App
