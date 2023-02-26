@@ -25,7 +25,7 @@
           </view>
         </view>
         <view v-show="foodListVisible" class="food_list" v-loading="loading" top="30px"
-          :style="{ minHeight: 'calc(100vh - 60px - 100rpx)' }">
+          >
           <view :class="['tab', tabVisible ? 'show' : 'hide']">
             <view @tap="changeTab(item)" v-for="item in tabList" :key="item.type"
               :class="['item', currentTab === item.type ? 'actived' : '']">
@@ -98,7 +98,7 @@ function ajaxFun(params) {
   setTimeout(() => {
     foodList.value = initFoodList
     loading.value = false
-  }, 300)
+  }, 600)
 }
 
 // input 相关

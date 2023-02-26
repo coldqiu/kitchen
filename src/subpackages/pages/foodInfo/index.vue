@@ -1,7 +1,8 @@
 <template>
   <view class="page">
     <InfoNavigationBar :title="params.id" />
-    <image src="https://cdn.coldqiu.com/136145419569074941.jpg"></image>
+    <image src="https://cdn.coldqiu.com/image-jepg/WechatIMG72.jpeg
+    "></image>
     <view class="food_title">
       <view class="title">{{ params.id }}</view>
       <view class="desc_wrap">
