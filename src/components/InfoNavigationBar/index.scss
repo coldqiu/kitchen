@@ -16,7 +16,7 @@
     bottom: -2px;
   }
   .capsule {
-    border: 1px solid #f0f0f1;
+    border: 0.5PX solid rgba(0,0,0,0.1);
     border-radius: 40px;
     box-sizing: border-box;
     height: 100%;
@@ -55,10 +55,9 @@
     .line {
       display: inline-block;
       vertical-align: middle;
-      width: 1px;
-      height: 42px;
-      background: #eaeaeb;
-      transform: scaleX(0.5);
+      width: 0.5PX;
+      height: 60%;
+      background: rgba(0,0,0,0.1);
     }
   }
 }
